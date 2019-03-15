@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import nowe.ObszarTekstowy;
 
 public class GlownaKlasa2 {
 
@@ -20,6 +21,7 @@ public class GlownaKlasa2 {
 			}*/
 			PoNacisnieciuPrzycisku2.akcja1();
 			Scena2.pokaz1(primaryStage);
+			ObszarTekstowy.pokaz();
 		});
 
 		StackPane layout = new StackPane();
