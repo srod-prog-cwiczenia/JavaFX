@@ -1,5 +1,8 @@
 package nowe;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -17,9 +20,17 @@ public class ObszarTekstowy {
 	      button.setMinWidth(50);
 
 	      button.setOnAction(action -> {
-	          System.out.println(textArea.getText());
+	          String tab[] = textArea.getText().split("\n");
+	          List<String> lista = Arrays.asList(tab);
+	          int sigma = 0;
+	          for (String linia : lista) {
+	        	  sigma += Integer.parseInt(linia);
+	          }
+	    	 
+//	          System.out.println(textArea.getText());
 
-	          textArea.setText("Clicked!");
+	          textArea.setText(textArea.getText() + "\n" + sigma);
+	          
 	      });
 
 	      VBox vbox = new VBox(textArea, button);
