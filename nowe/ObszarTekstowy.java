@@ -11,9 +11,9 @@ import javafx.scene.control.TextArea;
 
 
 public class ObszarTekstowy {
-	  public static void pokazArrayListLancuchow(List<String> kolekcja) {
+	  public static void pokazArrayListLancuchow(List<String> kolekcja, String tytul) {
 	      Stage formatkaN1 = new Stage();
-	      formatkaN1.setTitle("wyswietlenie tekstu");
+	      formatkaN1.setTitle(tytul);
 	      TextArea textArea = new TextArea();
 
 	      Button button = new Button("Wyjscie");
@@ -22,14 +22,16 @@ public class ObszarTekstowy {
 	      textArea.setText(kolekcja.toString());
 	      
 	      button.setOnAction(action -> {
-   	 
-	          
+            formatkaN1.close();	          
 	      });
 
 	      VBox vbox = new VBox(textArea, button);
 	      Scene scene = new Scene(vbox, 550, 350);
 	      formatkaN1.setScene(scene);
 	      formatkaN1.show();
+	  }
+	  public static void pokazArrayListLancuchow(List<String> kolekcja) {
+		  pokazArrayListLancuchow(kolekcja, "wyswietlenie listy lancuchow");
 	  }
 	  public static void pokaz() {
 	      Stage formatkaN1 = new Stage();
