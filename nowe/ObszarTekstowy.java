@@ -11,6 +11,26 @@ import javafx.scene.control.TextArea;
 
 
 public class ObszarTekstowy {
+	  public static void pokazArrayListLancuchow(List<String> kolekcja) {
+	      Stage formatkaN1 = new Stage();
+	      formatkaN1.setTitle("wyswietlenie tekstu");
+	      TextArea textArea = new TextArea();
+
+	      Button button = new Button("Wyjscie");
+	      button.setMinWidth(50);
+	      
+	      textArea.setText(kolekcja.toString());
+	      
+	      button.setOnAction(action -> {
+   	 
+	          
+	      });
+
+	      VBox vbox = new VBox(textArea, button);
+	      Scene scene = new Scene(vbox, 550, 350);
+	      formatkaN1.setScene(scene);
+	      formatkaN1.show();
+	  }
 	  public static void pokaz() {
 	      Stage formatkaN1 = new Stage();
 	      formatkaN1.setTitle("formatka z pakietu nowe");
@@ -35,7 +55,7 @@ public class ObszarTekstowy {
 
 	      VBox vbox = new VBox(textArea, button);
 
-	      Scene scene = new Scene(vbox, 200, 100);
+	      Scene scene = new Scene(vbox, 500, 300);
 	      formatkaN1.setScene(scene);
 	      formatkaN1.show();
 	  }
