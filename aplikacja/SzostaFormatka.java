@@ -40,8 +40,8 @@ public class SzostaFormatka {
       tableView.getColumns().add(column1);
       tableView.getColumns().add(column2);
 
-      tableView.getItems().add(new Person("John", "Doe"));
-      tableView.getItems().add(new Person("Jane", "Deer"));
+      tableView.getItems().add(new Person("Anna", "Kowalska"));
+      tableView.getItems().add(new Person("Dorota", "Nowak"));
 
       VBox vbox = new VBox(tableView);
 
