@@ -133,14 +133,24 @@ public class PiataFormatka {
 //			List<String> lancuchy = 
 //to nie chce sie przekomilowac:     		kolekcja.stream().map(object -> Osoba.toString(object, null)).collect(Collectors.toList());
 	        List<String> lancuchy1 = new ArrayList<String>();
+	        String lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
+		    lancuchSeparator += "Array list: "; 
+	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
+	        lancuchSeparator += "\n";
+	        lancuchy1.add(lancuchSeparator);
 	        for (Osoba oso : kolekcja) {
 	        	lancuchy1.add(oso.toString() + "\n");
 	        };
       		List<String> lancuchy2 = new ArrayList<String>();
    			zbiorOso.addAll(kolekcja);
-	        for (Osoba oso : zbiorOso) {
+   			for (Osoba oso : zbiorOso) {
 	        	lancuchy2.add(oso.toString() + "\n");
 	        };
+	        lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
+		    lancuchSeparator += "Hash set: "; 
+	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
+	        lancuchSeparator += "\n";
+	        lancuchy1.add(lancuchSeparator);
 	        lancuchy1.addAll(lancuchy2);
 	        ObszarTekstowy.pokazArrayListLancuchow(lancuchy1, "kolekcja wprowadzonych osob oraz zbior wprowadzonych osob:");	        
 		});
