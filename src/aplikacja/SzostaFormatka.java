@@ -5,6 +5,8 @@ import java.time.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,6 +26,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class SzostaFormatka {
+  private final static ObservableList<Person> data =
+    FXCollections.observableArrayList(
+	  new Person("Anna", "Zajdel"),
+      new Person("Beata", "Xyros"),
+      new Person("Celica", "Wyka"),
+      new Person("Dorota", "Ypsylon"),
+      new Person("Ewa", "Vitali")
+    );   
+	
   public static void pokaz() {
       Stage formatka6 = new Stage();
       formatka6.setTitle("6 formatka");
@@ -31,18 +42,23 @@ public class SzostaFormatka {
 
       TableView tableView = new TableView();
       TableColumn<String, Person> column1 = new TableColumn<String, Person>("Imie");
-      column1.setCellValueFactory(new PropertyValueFactory<String, Person>("getImie"));
+      column1.setCellValueFactory(new PropertyValueFactory<String, Person>("imie"));
 
       TableColumn<String, Person> column2 = new TableColumn<String, Person>("Nazwisko");
-      column2.setCellValueFactory(new PropertyValueFactory<String, Person>("getNazwisko"));
+      column2.setCellValueFactory(new PropertyValueFactory<String, Person>("nazwisko"));
 //to do wyjasnienia czemu wychodzi SzostaFormatka.java uses unchecked or unsafe operations
 //po odkomentowaniu tego co ponizej:
-      tableView.getColumns().add(column1);
-      tableView.getColumns().add(column2);
-
-      tableView.getItems().add(new Person("Anna", "Kowalska"));
-      tableView.getItems().add(new Person("Dorota", "Nowak"));
-
+      tableView.getColumns().addAll(column1, column2);
+      tableView.setEditable(true);
+      tableView.setItems(data);
+      
+      
+      
+      
+      /*tableView.getItems().add(new Person("Anna", "Kowalska"));
+      tableView.getItems().add(new Person("Dorota", "Nowak"));*/
+     
+      
       VBox vbox = new VBox(tableView);
 
       Scene scene = new Scene(vbox);
