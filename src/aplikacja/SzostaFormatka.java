@@ -35,7 +35,7 @@ public class SzostaFormatka {
       new Person("Ewa", "Vitali")
     );   
 	
-  public static void pokaz() {
+  public static void pokaz(ObservableList<Person> persony) {
       Stage formatka6 = new Stage();
       formatka6.setTitle("6 formatka");
       StackPane root6 = new StackPane();
@@ -48,12 +48,11 @@ public class SzostaFormatka {
       column2.setCellValueFactory(new PropertyValueFactory<String, Person>("nazwisko"));
 //to do wyjasnienia czemu wychodzi SzostaFormatka.java uses unchecked or unsafe operations
 //po odkomentowaniu tego co ponizej:
+      
       tableView.getColumns().addAll(column1, column2);
       tableView.setEditable(true);
-      tableView.setItems(data);
-      
-      
-      
+      //tableView.setItems(data);
+      tableView.setItems(persony);
       
       /*tableView.getItems().add(new Person("Anna", "Kowalska"));
       tableView.getItems().add(new Person("Dorota", "Nowak"));*/

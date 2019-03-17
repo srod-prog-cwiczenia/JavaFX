@@ -5,6 +5,8 @@ import java.time.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -161,7 +163,12 @@ public class PiataFormatka {
 		grid.getChildren().add(btnPokazGrid);
 //akcja przycisku PokazGrid:
 		btnPokazGrid.setOnAction((event) -> {
-		   	SzostaFormatka.pokaz();
+			List<Person> kolekcjaPersony = new ArrayList<Person>();
+			for (Osoba oso: kolekcja) {
+				kolekcjaPersony.add(new Person(oso.imie, oso.nazwisko));				
+			}
+		    ObservableList<Person> persony = FXCollections.observableArrayList(kolekcjaPersony);		     
+		   	SzostaFormatka.pokaz(persony);
 		});
 		
 		
