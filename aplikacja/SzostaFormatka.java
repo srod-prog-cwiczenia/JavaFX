@@ -30,18 +30,18 @@ public class SzostaFormatka {
       StackPane root6 = new StackPane();
 
       TableView tableView = new TableView();
-      TableColumn<String, Person> column1 = new TableColumn<String, Person>("First Name");
-      column1.setCellValueFactory(new PropertyValueFactory<String, Person>("firstName"));
+      TableColumn<String, Person> column1 = new TableColumn<String, Person>("Imie");
+      column1.setCellValueFactory(new PropertyValueFactory<String, Person>("getImie"));
 
-      TableColumn<String, Person> column2 = new TableColumn<String, Person>("Last Name");
-      column2.setCellValueFactory(new PropertyValueFactory<String, Person>("lastName"));
+      TableColumn<String, Person> column2 = new TableColumn<String, Person>("Nazwisko");
+      column2.setCellValueFactory(new PropertyValueFactory<String, Person>("getNazwisko"));
 //to do wyjasnienia czemu wychodzi SzostaFormatka.java uses unchecked or unsafe operations
 //po odkomentowaniu tego co ponizej:
-/*      tableView.getColumns().add(column1);
+      tableView.getColumns().add(column1);
       tableView.getColumns().add(column2);
 
       tableView.getItems().add(new Person("John", "Doe"));
-      tableView.getItems().add(new Person("Jane", "Deer"));*/
+      tableView.getItems().add(new Person("Jane", "Deer"));
 
       VBox vbox = new VBox(tableView);
 

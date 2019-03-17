@@ -2,30 +2,30 @@ package aplikacja;
 
 public class Person {
 
-    private String firstName = null;
-    private String lastName = null;
+    private String imie = null;
+    private String nazwisko = null;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Person(String imie, String nazwisko) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getImie() {
+        return imie;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setImie(String imie) {
+        this.imie = imie;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getNazwisko() {
+        return nazwisko;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
     }
 }

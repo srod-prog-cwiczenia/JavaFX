@@ -136,6 +136,16 @@ public class PiataFormatka {
    			ObszarTekstowy.pokazArrayListLancuchow(lancuchy);
 		});
 
+//Zdefiniowanie przycisku PokazGrid
+		Button btnPokazGrid = new Button("Pokaz Grid");
+		GridPane.setConstraints(btnPokazGrid, 1, 4);
+		grid.getChildren().add(btnPokazGrid);
+//akcja przycisku PokazGrid:
+		btnPokazGrid.setOnAction((event) -> {
+		   	SzostaFormatka.pokaz();
+		});
+		
+		
 		Scene scene = new Scene(grid, 400, 350);
 		formatka5.setScene(scene);
 		formatka5.show();
