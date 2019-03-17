@@ -18,7 +18,9 @@ import javafx.scene.layout.StackPane;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.Collections;
+import java.util.HashSet;
 
 
 public class PiataFormatka {
@@ -71,6 +73,7 @@ public class PiataFormatka {
 
 	public static void pokaz() {
 		List<Osoba> kolekcja = new ArrayList<Osoba>();
+		Set<Osoba> zbiorOso = new HashSet<Osoba>();
 
 		Stage formatka5 = new Stage();
 		formatka5.setTitle("Piąta formatka");
@@ -129,11 +132,17 @@ public class PiataFormatka {
 		btnPokaz.setOnAction((event) -> {
 //			List<String> lancuchy = 
 //to nie chce sie przekomilowac:     		kolekcja.stream().map(object -> Osoba.toString(object, null)).collect(Collectors.toList());
-	        List<String> lancuchy = new ArrayList<String>();
+	        List<String> lancuchy1 = new ArrayList<String>();
 	        for (Osoba oso : kolekcja) {
-	        	lancuchy.add(oso.toString() + "\n");
+	        	lancuchy1.add(oso.toString() + "\n");
 	        };
-   			ObszarTekstowy.pokazArrayListLancuchow(lancuchy);
+      		List<String> lancuchy2 = new ArrayList<String>();
+   			zbiorOso.addAll(kolekcja);
+	        for (Osoba oso : zbiorOso) {
+	        	lancuchy2.add(oso.toString() + "\n");
+	        };
+	        lancuchy1.addAll(lancuchy2);
+	        ObszarTekstowy.pokazArrayListLancuchow(lancuchy1, "kolekcja wprowadzonych osob oraz zbior wprowadzonych osob:");	        
 		});
 
 //Zdefiniowanie przycisku PokazGrid
