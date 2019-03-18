@@ -1,5 +1,6 @@
 package aplikacja;
 
+import helper.Analiza;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,11 +36,16 @@ public class GlownaKlasa2 {
 			Strumienie.przyklad1();
 		});
 
+		Button przycisk4 = new Button("Rekurencja");
+		przycisk4.setOnAction((event) -> {
+			System.out.println(Analiza.sprawdz());
+		});
+		
 		FlowPane fp = new FlowPane();
 /*		StackPane layout = new StackPane();
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
 		
-		fp.getChildren().addAll(przycisk1, przycisk2, przycisk3);
+		fp.getChildren().addAll(przycisk1, przycisk2, przycisk3, przycisk4);
         Scene scene = new Scene(/*layout*/fp, 550, 550);
 
 		primaryStage.setScene(scene);
