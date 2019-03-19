@@ -2,6 +2,7 @@ package aplikacja;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import narzedzia.Pomocnicze;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -17,8 +18,7 @@ public class GlownaKlasa3 {
 
 		button.setOnAction(event -> {
 			MetodaCosTam3.metodaCosTam1();
-			metodaCosTam(primaryStage);
-			System.out.println("Wiadomosc z konsoli"); 
+			wypisanieKomunikatu();
 		});
 		
 		
@@ -37,11 +37,7 @@ public class GlownaKlasa3 {
 
 	}
 
-	private static void metodaCosTam(Stage primaryStage) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Powiadomienie");
-		alert.setHeaderText("Naglowek");
-		alert.setContentText("Wywolanie metody private static void");
-		alert.showAndWait();
+	private static void wypisanieKomunikatu() {
+		Pomocnicze.komunikat("To jest klasa GlownaKlasa3.");
 	}
 }
