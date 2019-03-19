@@ -60,7 +60,7 @@ final static int LICZBA_ITEM_MENU = 6;
     });*/ // zbedne bo juz jest menubutton
 // tablica nazw opcji
     String[] nazwyOpcji = new String[] {
-	"Start", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
+	"Canvas", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
 	"Odnoga projektu nr 3", "Piata formatka"};
 //komponent MenuButton:
     MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
@@ -77,7 +77,7 @@ final static int LICZBA_ITEM_MENU = 6;
 	switch (ii) {
 		case 0:	
 			mITab[ii].setOnAction(event -> {
-				DrugaFormatka.pokaz();        	
+				DrugaFormatka.pokaz(1);        	
 			}); break;
 		case 1:
 			mITab[ii].setOnAction(event -> {
