@@ -25,7 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class SzostaFormatka {
+public class TableWidokFrm {
   private final static ObservableList<Person> data =
     FXCollections.observableArrayList(
 	  new Person("Anna", "Zajdel"),

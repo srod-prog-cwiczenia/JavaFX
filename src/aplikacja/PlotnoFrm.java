@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 
-public class DrugaFormatka {
+public class PlotnoFrm {
   public static void pokaz(int aWersja) {
 	  Stage formatka2 = new Stage();
       formatka2.setTitle("Druga formatka");

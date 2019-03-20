@@ -1,6 +1,7 @@
 package aplikacja;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ public class GlownaForma extends Application {
 	public static void main(String[] args) {
 	    launch(args);
 	}
-final static int LICZBA_ITEM_MENU = 6;
+final static int LICZBA_ITEM_MENU = 7;
 @Override
   public void start(Stage primaryStage) {
     primaryStage.setTitle("Główna formatka");
@@ -61,7 +62,7 @@ final static int LICZBA_ITEM_MENU = 6;
 // tablica nazw opcji
     String[] nazwyOpcji = new String[] {
 	"Canvas", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
-	"Odnoga projektu nr 3", "Piata formatka"};
+	"Odnoga projektu nr 3", "Piata formatka", "Koniec programu"};
 //komponent MenuButton:
     MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
     for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
@@ -77,11 +78,11 @@ final static int LICZBA_ITEM_MENU = 6;
 	switch (ii) {
 		case 0:	
 			mITab[ii].setOnAction(event -> {
-				DrugaFormatka.pokaz(1);        	
+				PlotnoFrm.pokaz(1);        	
 			}); break;
 		case 1:
 			mITab[ii].setOnAction(event -> {
-				TrzeciaFormatka.pokaz();
+				GlowneMenuFrm.pokaz();
 			}); break;
 		case 2:
 			mITab[ii].setOnAction(event -> {
@@ -98,6 +99,10 @@ final static int LICZBA_ITEM_MENU = 6;
 		case 5:
 			mITab[ii].setOnAction((event) -> {
 				PiataFormatka.pokaz();
+			}); break;
+		case 6:
+			mITab[ii].setOnAction((event) -> {
+				Platform.exit();
 			}); break;
 	}
     } 

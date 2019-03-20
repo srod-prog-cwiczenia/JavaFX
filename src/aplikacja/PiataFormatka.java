@@ -168,7 +168,7 @@ public class PiataFormatka {
 				kolekcjaPersony.add(new Person(oso.imie, oso.nazwisko));				
 			}
 		    ObservableList<Person> persony = FXCollections.observableArrayList(kolekcjaPersony);		     
-		   	SzostaFormatka.pokaz(persony);
+		   	TableWidokFrm.pokaz(persony);
 		});
 		
 		

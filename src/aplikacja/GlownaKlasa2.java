@@ -42,11 +42,12 @@ public class GlownaKlasa2 {
 
 		Button przycisk4 = new Button("Rekurencja");
 		przycisk4.setOnAction((event) -> {
-			System.out.println(Analiza.sprawdz());
+			Analiza analiza = new Analiza(10);
+			System.out.println(analiza.sprawdz());
 		});
 		
 
-//przyk³ad na radiobutton:
+//przykï¿½ad na radiobutton:
         RadioButton radioButton1 = new RadioButton("Jeden");
         RadioButton radioButton2 = new RadioButton("Dwa");
         RadioButton radioButton3 = new RadioButton("Trzy");
@@ -55,6 +56,7 @@ public class GlownaKlasa2 {
         ToggleGroup radioGroup = new ToggleGroup();
 
         radioButton1.setToggleGroup(radioGroup);
+        radioButton1.setSelected(true);
         radioButton2.setToggleGroup(radioGroup);
         radioButton3.setToggleGroup(radioGroup);
         radioButton4.setToggleGroup(radioGroup);

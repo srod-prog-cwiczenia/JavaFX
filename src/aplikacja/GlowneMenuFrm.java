@@ -17,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class TrzeciaFormatka {
+public class GlowneMenuFrm {
 	final static int LICZBA_ITEM_MENU = 6;
 	public static void pokaz() {
 		Stage formatka3 = new Stage();
@@ -42,8 +42,8 @@ public class TrzeciaFormatka {
 		  switch (ii) {
 			case 0:	
 				mITab[ii].setOnAction(event -> {
-					DrugaFormatka.pokaz(0);
-					DrugaFormatka.pokaz(1);
+					PlotnoFrm.pokaz(0);
+					PlotnoFrm.pokaz(1);
 				}); break;
 			case 1:
 				mITab[ii].setOnAction(event -> {
@@ -85,27 +85,38 @@ public class TrzeciaFormatka {
 	    opcja2MenuItem.setSelected(true);
 	    webMenu.getItems().add(opcja2MenuItem);
 
-	    Menu sqlMenu = new Menu("SQL");
+	    Menu plotnoMenu = new Menu("Plotno");
 	    ToggleGroup tGroup = new ToggleGroup();
-	    RadioMenuItem mysqlItem = new RadioMenuItem("MySQL");
-	    mysqlItem.setToggleGroup(tGroup);
+	    RadioMenuItem plotno1Item = new RadioMenuItem("Plotno 1");
+	    plotno1Item.setToggleGroup(tGroup);
 
-	    RadioMenuItem oracleItem = new RadioMenuItem("Oracle");
-	    oracleItem.setToggleGroup(tGroup);
-	    oracleItem.setSelected(true);
+	    RadioMenuItem plotno2Item = new RadioMenuItem("Plotno 2");
+	    plotno2Item.setToggleGroup(tGroup);
+	    plotno2Item.setSelected(true);
 
-	    sqlMenu.getItems().addAll(mysqlItem, oracleItem,
-	        new SeparatorMenuItem());
+	    MenuItem plotnoPokazMenu = new MenuItem("Plotno nr wybrany (pokaz)");
+	    plotnoMenu.getItems().addAll(plotno1Item, plotno2Item,
+	        new SeparatorMenuItem(), plotnoPokazMenu);
 
+	    plotnoPokazMenu.setOnAction(event -> {
+	        //TODO: do wypelnienia
+	    	if (plotno1Item.isSelected()) {
+	    		PlotnoFrm.pokaz(0);
+	    	} 
+	    	if (plotno2Item.isSelected()) {
+	    		PlotnoFrm.pokaz(1);
+	    	} 
+		}); 
+	    
 	    Menu podmenuMnu = new Menu("Podmenu");
 	    podmenuMnu.getItems().addAll(
 	        new CheckMenuItem("Opcja 1"),
 	        new CheckMenuItem("Opcja 2"),
 	        new CheckMenuItem("Opcja 3"));
 
-	    sqlMenu.getItems().add(podmenuMnu);
+	    plotnoMenu.getItems().add(podmenuMnu);
 
-	    menuBar.getMenus().addAll(fileMenu, webMenu, sqlMenu);
+	    menuBar.getMenus().addAll(fileMenu, webMenu, plotnoMenu);
 
 	    formatka3.setScene(scene);
 	    formatka3.show();	
