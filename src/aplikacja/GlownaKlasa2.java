@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
 import nowe.ObszarTekstowy;
+import nowe.PrzykladMap;
 import przyklady.Strumienie;
 
 public class GlownaKlasa2 {
@@ -43,7 +44,13 @@ public class GlownaKlasa2 {
 		Button przycisk4 = new Button("Rekurencja");
 		przycisk4.setOnAction((event) -> {
 			Analiza analiza = new Analiza(10);
-			System.out.println(analiza.sprawdz());
+			Pomocnicze.komunikat(analiza.sprawdz().toString());
+			Pomocnicze.komunikat("" + analiza.rezultatyMap.keySet().size());
+		});
+
+		Button przycisk6 = new Button("Test mapy");
+		przycisk6.setOnAction((event) -> {
+			(new PrzykladMap()).przyklad1();
 		});
 		
 
@@ -84,7 +91,7 @@ public class GlownaKlasa2 {
 /*		StackPane layout = new StackPane();
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
 		
-		fp.getChildren().addAll(przycisk1, przycisk2, przycisk3, przycisk4, hboxRB, przycisk5);
+		fp.getChildren().addAll(przycisk1, przycisk2, przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
         Scene scene = new Scene(/*layout*/fp, 550, 550);
 
 		primaryStage.setScene(scene);

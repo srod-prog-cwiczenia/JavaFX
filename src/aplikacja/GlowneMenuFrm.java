@@ -19,8 +19,13 @@ import javafx.stage.Stage;
 
 public class GlowneMenuFrm {
 	final static int LICZBA_ITEM_MENU = 6;
-	public static void pokaz() {
-		Stage formatka3 = new Stage();
+	public static void pokaz(Stage glowneStage) {
+		Stage formatka3;
+		if (glowneStage == null) {
+			formatka3 = new Stage();	
+		} else {
+			formatka3 = glowneStage;
+		}
 	    formatka3.setTitle("Trzecia formatka");
 		BorderPane root = new BorderPane();
 	    Scene scene = new Scene(root, 600, 650, Color.LIGHTGREEN);
@@ -63,7 +68,7 @@ public class GlowneMenuFrm {
 	    			}); break;
 			case 5:
 				mITab[ii].setOnAction((event) -> {
-					PiataFormatka.pokaz();
+					EdycjaOsobyFrm.pokaz();
 				}); break;
 		  }
 	    } 	    
@@ -76,14 +81,14 @@ public class GlowneMenuFrm {
 	    fileMenu.getItems().addAll(mITab);
 	    fileMenu.getItems().addAll(new SeparatorMenuItem(), exitMenuItem);
 
-	    Menu webMenu = new Menu("Checkouty");
+	    Menu checkoutMenu = new Menu("Checkouty");
 	    CheckMenuItem opcja1MenuItem = new CheckMenuItem("Opcja 1");
 	    opcja1MenuItem.setSelected(true);
-	    webMenu.getItems().add(opcja1MenuItem);
+	    checkoutMenu.getItems().add(opcja1MenuItem);
 
 	    CheckMenuItem opcja2MenuItem = new CheckMenuItem("Opcja 2");
 	    opcja2MenuItem.setSelected(true);
-	    webMenu.getItems().add(opcja2MenuItem);
+	    checkoutMenu.getItems().add(opcja2MenuItem);
 
 	    Menu plotnoMenu = new Menu("Plotno");
 	    ToggleGroup tGroup = new ToggleGroup();
@@ -116,7 +121,7 @@ public class GlowneMenuFrm {
 
 	    plotnoMenu.getItems().add(podmenuMnu);
 
-	    menuBar.getMenus().addAll(fileMenu, webMenu, plotnoMenu);
+	    menuBar.getMenus().addAll(fileMenu, checkoutMenu, plotnoMenu);
 
 	    formatka3.setScene(scene);
 	    formatka3.show();	

@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.HashSet;
 
 
-public class PiataFormatka {
+public class EdycjaOsobyFrm {
 	static class Osoba {
 		String imie, nazwisko, komentarz;
 

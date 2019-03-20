@@ -1,12 +1,24 @@
 package helper;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class Analiza {
 	private  int rozmiar = 10;
+	public Map<String, Kolor> rezultatyMap; //TODO: nieladne rozwiazanie, na razie chwilowe (public)
 	public Analiza (int rozmiar) {
 		super();
 		this.rozmiar = rozmiar;
+		rezultatyMap = new HashMap<>();
+	}
+	public void zapiszRezultat(boolean skreslone[], Kolor kolor) {
+		char tablicaCh[] = new char[this.rozmiar];
+		for (int qq = 0; qq < rozmiar; qq++) {
+			tablicaCh[qq] = (skreslone[qq + 1] ? '1' : '0');
+		}
+		String txt = String.valueOf(tablicaCh);
+		rezultatyMap.put(txt, kolor);
 	}
 	public  Kolor ocena(boolean skreslone[]) {
 		/*String txt = "";
@@ -18,7 +30,10 @@ public class Analiza {
 		for (int jj = 1; jj <= rozmiar; jj++) {
 			sameSkreslone = sameSkreslone && skreslone[jj];
 		}
-		if (sameSkreslone) return Kolor.CZARNY;
+		if (sameSkreslone) {
+			zapiszRezultat(skreslone, Kolor.CZARNY);
+			return Kolor.CZARNY;
+		}
 		
 		boolean dane[] = new boolean[rozmiar + 1];
 		boolean sameBiale = true;
@@ -34,7 +49,9 @@ public class Analiza {
 			}
 			sameBiale = sameBiale && ocena(dane) == Kolor.BIALY;
 		}
-		return sameBiale ? Kolor.CZARNY : Kolor.BIALY;
+		Kolor ocenaKolor = sameBiale ? Kolor.CZARNY : Kolor.BIALY;
+		zapiszRezultat(skreslone, ocenaKolor);
+		return ocenaKolor;
 	}
 	public Kolor sprawdz() {
 		boolean skreslone[] = new boolean [rozmiar + 1];

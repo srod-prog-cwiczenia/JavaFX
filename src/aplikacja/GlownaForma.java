@@ -22,6 +22,14 @@ public class GlownaForma extends Application {
 final static int LICZBA_ITEM_MENU = 7;
 @Override
   public void start(Stage primaryStage) {
+	GlowneMenuFrm.pokaz(primaryStage);
+  }
+/**
+ * Stara wersja glownej formatki, nie oparta o menu
+ * 
+ * @primaryStage - poczatkowa stage aplikacji
+ */
+  public void startPoprzednia(Stage primaryStage) {
     primaryStage.setTitle("Główna formatka");
 /*
     Button btn1 = new Button();
@@ -82,7 +90,7 @@ final static int LICZBA_ITEM_MENU = 7;
 			}); break;
 		case 1:
 			mITab[ii].setOnAction(event -> {
-				GlowneMenuFrm.pokaz();
+				GlowneMenuFrm.pokaz(null);
 			}); break;
 		case 2:
 			mITab[ii].setOnAction(event -> {
@@ -98,7 +106,7 @@ final static int LICZBA_ITEM_MENU = 7;
     			}); break;
 		case 5:
 			mITab[ii].setOnAction((event) -> {
-				PiataFormatka.pokaz();
+				EdycjaOsobyFrm.pokaz();
 			}); break;
 		case 6:
 			mITab[ii].setOnAction((event) -> {
