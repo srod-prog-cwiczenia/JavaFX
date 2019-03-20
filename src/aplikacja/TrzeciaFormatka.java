@@ -51,7 +51,7 @@ public class TrzeciaFormatka {
 				}); break;
 			case 2:
 				mITab[ii].setOnAction(event -> {
-			        CzwartaFormatka.pokaz();
+			        PasekPostepuFrm.pokaz();
 				}); break;
 			case 3:	   
 				mITab[ii].setOnAction(event -> {

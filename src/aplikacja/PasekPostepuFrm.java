@@ -12,7 +12,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-public class CzwartaFormatka {
+public class PasekPostepuFrm {
 
 	public static ProgressBar p2;
 	public static void pokaz() {
