@@ -1,6 +1,7 @@
 package aplikacja;
 
 import helper.Analiza;
+import helper.AnalizaDialog;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -45,9 +46,10 @@ public class GlownaKlasa2 {
 
 		Button przycisk4 = new Button("Rekurencja");
 		przycisk4.setOnAction((event) -> {
-			Analiza analiza = new Analiza(10);
+			/*Analiza analiza = new Analiza(10);
 			Pomocnicze.komunikat(analiza.sprawdz().toString());
-			Pomocnicze.komunikat("" + analiza.rezultatyMap.keySet().size());
+			Pomocnicze.komunikat("" + analiza.rezultatyMap.keySet().size());*/
+			AnalizaDialog.run();
 		});
 
 		Button przycisk6 = new Button("Test mapy");

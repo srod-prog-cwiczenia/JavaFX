@@ -15,7 +15,7 @@ public class Analiza {
 	public void zapiszRezultat(boolean skreslone[], Kolor kolor) {
 		char tablicaCh[] = new char[this.rozmiar];
 		for (int qq = 0; qq < rozmiar; qq++) {
-			tablicaCh[qq] = (skreslone[qq + 1] ? '1' : '0');
+			tablicaCh[qq] = (skreslone[qq + 1] ? 'X' : '0');
 		}
 		String txt = String.valueOf(tablicaCh);
 		rezultatyMap.put(txt, kolor);
