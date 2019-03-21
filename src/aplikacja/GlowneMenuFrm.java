@@ -33,6 +33,15 @@ public class GlowneMenuFrm {
 	    MenuBar menuBar = new MenuBar();
 	    menuBar.prefWidthProperty().bind(formatka3.widthProperty());
 	    root.setTop(menuBar);
+//block checkoutow:
+	    Menu checkoutMenu = new Menu("Opcje programu");
+	    CheckMenuItem opcja1MenuItem = new CheckMenuItem("Tilepane w Odnodze 2 programu");
+	    opcja1MenuItem.setSelected(true);
+	    checkoutMenu.getItems().add(opcja1MenuItem);
+
+	    CheckMenuItem opcja2MenuItem = new CheckMenuItem("Opcja 2");
+	    opcja2MenuItem.setSelected(true);
+	    checkoutMenu.getItems().add(opcja2MenuItem);
 	    
 	 // tablica nazw opcji
 	    String[] nazwyOpcji = new String[] {
@@ -60,7 +69,7 @@ public class GlowneMenuFrm {
 				}); break;
 			case 3:	   
 				mITab[ii].setOnAction(event -> {
-					GlownaKlasa2.pokaz();
+					GlownaKlasa2.pokaz(opcja1MenuItem.isSelected());
 	    			}); break;
 			case 4:
 				mITab[ii].setOnAction(event -> {
@@ -80,15 +89,6 @@ public class GlowneMenuFrm {
 
 	    fileMenu.getItems().addAll(mITab);
 	    fileMenu.getItems().addAll(new SeparatorMenuItem(), exitMenuItem);
-
-	    Menu checkoutMenu = new Menu("Checkouty");
-	    CheckMenuItem opcja1MenuItem = new CheckMenuItem("Opcja 1");
-	    opcja1MenuItem.setSelected(true);
-	    checkoutMenu.getItems().add(opcja1MenuItem);
-
-	    CheckMenuItem opcja2MenuItem = new CheckMenuItem("Opcja 2");
-	    opcja2MenuItem.setSelected(true);
-	    checkoutMenu.getItems().add(opcja2MenuItem);
 
 	    Menu plotnoMenu = new Menu("Plotno");
 	    ToggleGroup tGroup = new ToggleGroup();

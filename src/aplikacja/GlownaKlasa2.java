@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -17,17 +18,18 @@ import przyklady.Strumienie;
 
 public class GlownaKlasa2 {
 
-	public static void pokaz() {
+	public static void pokaz(boolean czyTilePane) {
 
 		Stage primaryStage = new Stage();
-		Button przycisk1 = new Button("Uruchomienie akcji opisującej co sie dzieje w konsoli");
+		Button przycisk1 = new Button("Uruchomienie listy " +
+				"przykladow z opisem tego co sie dzieje na konsoli");
 
 		przycisk1.setOnAction((event) -> {
 			// Button was clicked, do something...
 			/*for (int ii = 0; ii < 10; ii++) {
 				System.out.println(ii + " ");
 			}*/ //TODO: uporzadkowac te dwie metody ponizej
-			PoNacisnieciuPrzycisku2.akcja1();
+			PrzykladyKonsolowe.akcja1();
 			Scena2.pokaz1(primaryStage);
 		});
 
@@ -87,13 +89,23 @@ public class GlownaKlasa2 {
 		});
 		
 		
-		FlowPane fp = new FlowPane();
+		FlowPane fp = null;
+		TilePane tp = null;
+		if (czyTilePane) {
+			tp = new TilePane();
+		} else {
+			fp = new FlowPane();
+		}
 /*		StackPane layout = new StackPane();
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
-		
-		fp.getChildren().addAll(przycisk1, przycisk2, przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
-        Scene scene = new Scene(/*layout*/fp, 550, 550);
+		if (tp == null)
+			fp.getChildren().addAll(przycisk1, przycisk2, 
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
+		else 
+			tp.getChildren().addAll(przycisk1, przycisk2, 
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
 
+		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 

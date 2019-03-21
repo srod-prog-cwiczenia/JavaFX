@@ -70,7 +70,7 @@ final static int LICZBA_ITEM_MENU = 7;
 // tablica nazw opcji
     String[] nazwyOpcji = new String[] {
 	"Canvas", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
-	"Odnoga projektu nr 3", "Piata formatka", "Koniec programu"};
+	"Odnoga projektu nr 3", "Wprowadzanie danych osob", "Koniec programu"};
 //komponent MenuButton:
     MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
     for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
@@ -98,7 +98,7 @@ final static int LICZBA_ITEM_MENU = 7;
 			}); break;
 		case 3:	   
 			mITab[ii].setOnAction(event -> {
-				GlownaKlasa2.pokaz();
+				GlownaKlasa2.pokaz(false);
     			}); break;
 		case 4:
 			mITab[ii].setOnAction(event -> {
