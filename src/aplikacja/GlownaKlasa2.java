@@ -1,5 +1,8 @@
 package aplikacja;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import helper.Analiza;
 import helper.AnalizaDialog;
 import javafx.application.Application;
@@ -15,6 +18,7 @@ import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
+import nowe.TextAreaZTextEditFrm;
 import przyklady.Strumienie;
 
 public class GlownaKlasa2 {
@@ -55,6 +59,14 @@ public class GlownaKlasa2 {
 		Button przycisk6 = new Button("Test mapy");
 		przycisk6.setOnAction((event) -> {
 			(new PrzykladMap()).przyklad1();
+		});
+
+		Button przycisk7 = new Button("Uruchomienie TextAreaZTextEditFrm");
+		przycisk7.setOnAction((event) -> {
+			TextAreaZTextEditFrm.pokazArrayListLancuchow(
+					new ArrayList<String>(
+  				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), ""
+  				      );
 		});
 		
 
@@ -102,10 +114,10 @@ public class GlownaKlasa2 {
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
 		if (tp == null)
 			fp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, przycisk7);
 		else 
 			tp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6);
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, przycisk7);
 
 		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);

@@ -17,7 +17,7 @@ public class GlownaKlasa3 {
 		Button button = new Button("Wielokrotne wywolanie");
 
 		button.setOnAction(event -> {
-			MetodaCosTam3.metodaCosTam1();
+			Powiadomienie3.powiadomienie1();
 			wypisanieKomunikatu();
 		});
 		

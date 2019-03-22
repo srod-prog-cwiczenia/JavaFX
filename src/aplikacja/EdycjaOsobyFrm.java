@@ -78,7 +78,7 @@ public class EdycjaOsobyFrm {
 		Set<Osoba> zbiorOso = new HashSet<Osoba>();
 
 		Stage formatka5 = new Stage();
-		formatka5.setTitle("Piąta formatka");
+		formatka5.setTitle("Edycja danych osoby");
 		StackPane root5 = new StackPane();
 //Stworzenie pojemnika GridPane 
 		GridPane grid = new GridPane();

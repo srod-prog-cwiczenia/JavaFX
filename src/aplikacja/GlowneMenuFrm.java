@@ -46,7 +46,7 @@ public class GlowneMenuFrm {
 	 // tablica nazw opcji
 	    String[] nazwyOpcji = new String[] {
 		  "Canvas", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
-		  "Odnoga projektu nr 3", "Piata formatka"};
+		  "Odnoga projektu nr 3", "Edycja danych osoby"};
 	//komponent MenuButton:
 	    MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
 	    for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
