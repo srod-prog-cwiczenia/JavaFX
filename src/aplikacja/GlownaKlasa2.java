@@ -68,6 +68,11 @@ public class GlownaKlasa2 {
   				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), ""
   				      );
 		});
+
+		Button btnWyjscie = new Button("Wyjscie");
+  		btnWyjscie.setOnAction((event) -> {
+			primaryStage.close();
+		});
 		
 
 //przyk�ad na radiobutton:
@@ -114,10 +119,12 @@ public class GlownaKlasa2 {
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
 		if (tp == null)
 			fp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, przycisk7);
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, 
+					przycisk7, btnWyjscie);
 		else 
 			tp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, przycisk7);
+					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, 
+					przycisk7, btnWyjscie);
 
 		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);

@@ -50,10 +50,17 @@ public class Strumienie {
 		List<Osoba> lOso = Arrays.asList(new Osoba("Adam", "Kowalski"), new Osoba("Monika", "Test"));
 		List<String> lLan = getStringList(lOso);
 		ObszarTekstowy.pokazArrayListLancuchow(lLan, "wszystkie osoby");
-		Stream<Osoba> panie = lOso.stream().filter(oso -> 
+		
+		Stream<Osoba> strPanie = lOso.stream().filter(oso -> 
 		  oso.getImie().charAt(oso.getImie().length() - 1) == 'a'); 
 		List<String> lLanPanie = new ArrayList<String>();
-		panie.forEach(dama -> lLanPanie.add(dama.toString()));
-		ObszarTekstowy.pokazArrayListLancuchow(lLanPanie, "tylko panie");		
+		strPanie.forEach(dama -> lLanPanie.add(dama.toString()));
+		ObszarTekstowy.pokazArrayListLancuchow(lLanPanie, "tylko panie");
+
+		Stream<String >strUpperCase = lLan.stream().map(lancuch->lancuch.toUpperCase());
+		List<String> lLanUpperCase = new ArrayList<String>();
+		strUpperCase.forEach(txt -> lLanUpperCase.add(txt));
+		ObszarTekstowy.pokazArrayListLancuchow(lLanUpperCase, "wszyscy z duzych liter");		
+		
 	}
 }
