@@ -26,30 +26,37 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class TableWidokFrm {
-  private final static ObservableList<Person> data =
+	/**
+	 * To jest nieuzywana zmienna, tylko do testow
+	 */
+  private final static ObservableList<OsobaKlasaZewn> data =
     FXCollections.observableArrayList(
-	  new Person("Anna", "Zajdel"),
-      new Person("Beata", "Xyros"),
-      new Person("Celica", "Wyka"),
-      new Person("Dorota", "Ypsylon"),
-      new Person("Ewa", "Vitali")
+	  new OsobaKlasaZewn("Anna", "Zajdel", "stud"),
+      new OsobaKlasaZewn("Beata", "Xyros", "prac"),
+      new OsobaKlasaZewn("Celica", "Wyka", "uczen"),
+      new OsobaKlasaZewn("Dorota", "Ypsylon", "prac"),
+      new OsobaKlasaZewn("Ewa", "Vitali", "stud")
     );   
 	
-  public static void pokaz(ObservableList<Person> persony) {
+  public static void pokaz(ObservableList<OsobaKlasaZewn> persony) {
       Stage formatka6 = new Stage();
       formatka6.setTitle("6 formatka");
       StackPane root6 = new StackPane();
 
       TableView tableView = new TableView();
-      TableColumn<String, Person> column1 = new TableColumn<String, Person>("Imie");
-      column1.setCellValueFactory(new PropertyValueFactory<String, Person>("imie"));
+      TableColumn<String, OsobaKlasaZewn> column1 = new TableColumn<String, OsobaKlasaZewn>("Imie");
+      column1.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("imie"));
 
-      TableColumn<String, Person> column2 = new TableColumn<String, Person>("Nazwisko");
-      column2.setCellValueFactory(new PropertyValueFactory<String, Person>("nazwisko"));
+      TableColumn<String, OsobaKlasaZewn> column2 = new TableColumn<String, OsobaKlasaZewn>("Nazwisko");
+      column2.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("nazwisko"));
+
+      TableColumn<String, OsobaKlasaZewn> column3 = new TableColumn<String, OsobaKlasaZewn>("Komentarz");
+      column3.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("komentarz"));
+
 //to do wyjasnienia czemu wychodzi SzostaFormatka.java uses unchecked or unsafe operations
 //po odkomentowaniu tego co ponizej:
       
-      tableView.getColumns().addAll(column1, column2);
+      tableView.getColumns().addAll(column1, column2, column3);
       tableView.setEditable(true);
       //tableView.setItems(data);
       tableView.setItems(persony);

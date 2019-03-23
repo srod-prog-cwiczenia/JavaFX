@@ -1,16 +1,18 @@
 package aplikacja;
 
-public class Person {
+public class OsobaKlasaZewn {
 
     private String imie = null;
     private String nazwisko = null;
+    private String komentarz = null;
 
-    public Person() {
+    public OsobaKlasaZewn() {
     }
 
-    public Person(String imie, String nazwisko) {
+    public OsobaKlasaZewn(String imie, String nazwisko, String komentarz) {
         this.imie = imie;
         this.nazwisko = nazwisko;
+        this.komentarz = komentarz;
     }
 
     public String getImie() {
@@ -28,4 +30,14 @@ public class Person {
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
     }
+
+	public String getKomentarz() {
+		return komentarz;
+	}
+
+	public void setKomentarz(String komentarz) {
+		this.komentarz = komentarz;
+	}
+    
+    
 }

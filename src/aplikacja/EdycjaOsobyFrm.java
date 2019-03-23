@@ -26,7 +26,7 @@ import java.util.HashSet;
 
 
 public class EdycjaOsobyFrm {
-	static class Osoba {
+	static class OsobaKlasaWewn implements Comparable<OsobaKlasaWewn> {
 		String imie, nazwisko, komentarz;
 
 		@Override
@@ -52,7 +52,7 @@ public class EdycjaOsobyFrm {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Osoba other = (Osoba) obj;
+			OsobaKlasaWewn other = (OsobaKlasaWewn) obj;
 			if (imie == null) {
 				if (other.imie != null)
 					return false;
@@ -70,12 +70,21 @@ public class EdycjaOsobyFrm {
 				return false;
 			return true;
 		}
-		
+		@Override
+		public int compareTo(OsobaKlasaWewn oso) {
+			int wynik = this.nazwisko.compareTo(oso.nazwisko);
+			if (wynik != 0) return wynik;
+			wynik = this.imie.compareTo(oso.imie);
+			if (wynik != 0) return wynik;
+			wynik = this.komentarz.compareTo(oso.komentarz);
+			return wynik;
+			
+		} 
 	}
 
 	public static void pokaz() {
-		List<Osoba> kolekcja = new ArrayList<Osoba>();
-		Set<Osoba> zbiorOso = new HashSet<Osoba>();
+		List<OsobaKlasaWewn> kolekcja = new ArrayList<OsobaKlasaWewn>();
+		Set<OsobaKlasaWewn> zbiorOso = new HashSet<OsobaKlasaWewn>();
 
 		Stage formatka5 = new Stage();
 		formatka5.setTitle("Edycja danych osoby");
@@ -119,42 +128,48 @@ public class EdycjaOsobyFrm {
 		grid.getChildren().add(btnWyslij);
 //akcja przycisku Wyslij:
 		btnWyslij.setOnAction((event) -> {
-			Osoba oso = new Osoba();			
+			OsobaKlasaWewn oso = new OsobaKlasaWewn();			
 			oso.imie = imie.getText();
 			oso.nazwisko = nazwisko.getText();
 			oso.komentarz = komentarz.getText();
 			kolekcja.add(oso);
 			btnSkasuj.getOnAction().handle(null); //aby skasować pola - null to wartość akcji
 		});
+//Zdefiniowanie przycisku sortuj
+		Button btnSortuj = new Button("Posortuj");
+		GridPane.setConstraints(btnSortuj, 1, 5);
+		grid.getChildren().add(btnSortuj);
+//akcja przycisku Sortuj:
+		btnSortuj.setOnAction((event) -> {
+			Collections.sort(kolekcja);
+		});
 //Zdefiniowanie przycisku Pokaz
-		Button btnPokaz = new Button("Pokaz");
+		Button btnPokaz = new Button("Pokaz kolekcje");
 		GridPane.setConstraints(btnPokaz, 1, 3);
 		grid.getChildren().add(btnPokaz);
 //akcja przycisku Pokaz:
 		btnPokaz.setOnAction((event) -> {
 //			List<String> lancuchy = 
 //to nie chce sie przekomilowac:     		kolekcja.stream().map(object -> Osoba.toString(object, null)).collect(Collectors.toList());
-	        List<String> lancuchy1 = new ArrayList<String>();
+	        List<String> lLancuchy = new ArrayList<String>();
 	        String lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
 		    lancuchSeparator += "Array list: "; 
 	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
 	        lancuchSeparator += "\n";
-	        lancuchy1.add(lancuchSeparator);
-	        for (Osoba oso : kolekcja) {
-	        	lancuchy1.add(oso.toString() + "\n");
+	        lLancuchy.add(lancuchSeparator);
+	        for (OsobaKlasaWewn oso : kolekcja) {
+	        	lLancuchy.add(oso.toString() + "\n");
 	        };
-      		List<String> lancuchy2 = new ArrayList<String>();
    			zbiorOso.addAll(kolekcja);
-   			for (Osoba oso : zbiorOso) {
-	        	lancuchy2.add(oso.toString() + "\n");
-	        };
 	        lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
 		    lancuchSeparator += "Hash set: "; 
 	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
 	        lancuchSeparator += "\n";
-	        lancuchy1.add(lancuchSeparator);
-	        lancuchy1.addAll(lancuchy2);
-	        ObszarTekstowy.pokazArrayListLancuchow(lancuchy1, "kolekcja wprowadzonych osob oraz zbior wprowadzonych osob:");	        
+	        lLancuchy.add(lancuchSeparator);
+   			for (OsobaKlasaWewn oso : zbiorOso) {
+	        	lLancuchy.add(oso.toString() + "\n");
+	        };
+	        ObszarTekstowy.pokazArrayListLancuchow(lLancuchy, "kolekcja wprowadzonych osob oraz zbior wprowadzonych osob:");	        
 		});
 
 //Zdefiniowanie przycisku PokazGrid
@@ -163,11 +178,11 @@ public class EdycjaOsobyFrm {
 		grid.getChildren().add(btnPokazGrid);
 //akcja przycisku PokazGrid:
 		btnPokazGrid.setOnAction((event) -> {
-			List<Person> kolekcjaPersony = new ArrayList<Person>();
-			for (Osoba oso: kolekcja) {
-				kolekcjaPersony.add(new Person(oso.imie, oso.nazwisko));				
+			List<OsobaKlasaZewn> kolekcjaPersony = new ArrayList<OsobaKlasaZewn>();
+			for (OsobaKlasaWewn oso: kolekcja) {
+				kolekcjaPersony.add(new OsobaKlasaZewn(oso.imie, oso.nazwisko, oso.komentarz));				
 			}
-		    ObservableList<Person> persony = FXCollections.observableArrayList(kolekcjaPersony);		     
+		    ObservableList<OsobaKlasaZewn> persony = FXCollections.observableArrayList(kolekcjaPersony);		     
 		   	TableWidokFrm.pokaz(persony);
 		});
 		
