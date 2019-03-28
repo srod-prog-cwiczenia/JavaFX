@@ -46,7 +46,7 @@ public class GlowneMenuFrm {
 		checkoutMenu.getItems().add(opcja2MenuItem);
 
 		// tablica nazw opcji
-		String[] nazwyOpcji = new String[] { "Canvas", "Uruchomienie menu", "Test paska postępu",
+		String[] nazwyOpcji = new String[] { "Grafika", "Uruchomienie menu", "Test paska postępu",
 				"Odnoga projektu nr 2", "Odnoga projektu nr 3", "Edycja danych osoby" };
 		// komponent MenuButton:
 		MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
@@ -97,16 +97,16 @@ public class GlowneMenuFrm {
 		fileMenu.getItems().addAll(mITab);
 		fileMenu.getItems().addAll(new SeparatorMenuItem(), exitMenuItem);
 
-		Menu plotnoMenu = new Menu("Plotno");
+		Menu plotnoMenu = new Menu("Grafika");
 		ToggleGroup tGroup = new ToggleGroup();
-		RadioMenuItem plotno1Item = new RadioMenuItem("Plotno 1");
+		RadioMenuItem plotno1Item = new RadioMenuItem("Grafika 1");
 		plotno1Item.setToggleGroup(tGroup);
 
-		RadioMenuItem plotno2Item = new RadioMenuItem("Plotno 2");
+		RadioMenuItem plotno2Item = new RadioMenuItem("Grafika 2");
 		plotno2Item.setToggleGroup(tGroup);
 		plotno2Item.setSelected(true);
 
-		MenuItem plotnoPokazMenu = new MenuItem("Plotno nr wybrany (pokaz)");
+		MenuItem plotnoPokazMenu = new MenuItem("Wybrana grafika (pokaz)");
 		plotnoMenu.getItems().addAll(plotno1Item, plotno2Item, new SeparatorMenuItem(), plotnoPokazMenu);
 
 		plotnoPokazMenu.setOnAction(event -> {

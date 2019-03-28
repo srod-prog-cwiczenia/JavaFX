@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import narzedzia.Pomocnicze;
 import nowe.ObszarTekstowy;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -152,20 +153,12 @@ public class EdycjaOsobyFrm {
 //			List<String> lancuchy = 
 //to nie chce sie przekomilowac:     		kolekcja.stream().map(object -> Osoba.toString(object, null)).collect(Collectors.toList());
 	        List<String> lLancuchy = new ArrayList<String>();
-	        String lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
-		    lancuchSeparator += "Array list: "; 
-	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
-	        lancuchSeparator += "\n";
-	        lLancuchy.add(lancuchSeparator);
+	        lLancuchy.add(Pomocnicze.zbudujNaglowek("Array list", 70) + "\n");
 	        for (OsobaKlasaWewn oso : kolekcja) {
 	        	lLancuchy.add(oso.toString() + "\n");
 	        };
    			zbiorOso.addAll(kolekcja);
-	        lancuchSeparator = new String(new char[30]).replace("\0", "-"); 
-		    lancuchSeparator += "Hash set: "; 
-	        lancuchSeparator += (new String(new char[30]).replace("\0", "-"));
-	        lancuchSeparator += "\n";
-	        lLancuchy.add(lancuchSeparator);
+   			lLancuchy.add(Pomocnicze.zbudujNaglowek("Hash set", 70) + "\n");
    			for (OsobaKlasaWewn oso : zbiorOso) {
 	        	lLancuchy.add(oso.toString() + "\n");
 	        };
