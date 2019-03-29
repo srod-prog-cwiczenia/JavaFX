@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 
 
 public class ObszarTekstowy {
@@ -40,9 +41,11 @@ public class ObszarTekstowy {
 	      formatkaN1.setTitle("formatka z pakietu nowe");
 	      TextArea textArea = new TextArea();
 
+	      Tooltip ttSumowanie = new Tooltip("Wybiera do sumowania tylko te wiersze\nktore daja sie przekonwertowac do liczby");
 	      Button btnSumowanie = new Button("Podsumowanie wierszy będących liczbami");
 	      btnSumowanie.setMinWidth(50);
-
+	      btnSumowanie.setTooltip(ttSumowanie);
+	      
 	      btnSumowanie.setOnAction(action -> {
 	          String tab[] = textArea.getText().split("\n");
 	          List<String> lista = Arrays.asList(tab);

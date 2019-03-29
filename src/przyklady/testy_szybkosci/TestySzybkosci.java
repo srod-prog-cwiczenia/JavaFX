@@ -1,13 +1,13 @@
-package testy;
+package przyklady.testy_szybkosci;
 
 public class TestySzybkosci {
-	public static final int LICZBA_CYKLI=100000;
-	public static String testStringBuilder() {
+	public static String testStringBuilder(double ileTestow) {
+		int LICZBA_CYKLI = (int)ileTestow;
 		String raport = "";
 		String s = "a";
 		long start = System.nanoTime();
-		for(int i=0; i<LICZBA_CYKLI; i++) {
-			s = s+"a";
+		for (int i = 0; i < LICZBA_CYKLI; i++) {
+			s = s + "a";
 			//s = new StringBuilder(s).append("a").toString();
 		}
 		raport += "Czas - string : " + (System.nanoTime() - start) + "\n";
