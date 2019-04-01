@@ -25,56 +25,20 @@ final static int LICZBA_ITEM_MENU = 7;
 	GlowneMenuFrm.pokaz(primaryStage);
   }
 /**
- * Stara wersja glownej formatki, nie oparta o menu
- * 
+ * stara wersja glownej formatki, obecnie do wykorzystania, bo jest nieuzywana 
  * @primaryStage - poczatkowa stage aplikacji
  */
   public void startPoprzednia(Stage primaryStage) {
     primaryStage.setTitle("Główna formatka");
-/*
-    Button btn1 = new Button();
-    btn1.setText("Start");
-    btn1.setOnAction((event) -> {
-      DrugaFormatka.pokaz();        
-    });
-         
-    Button btn2 = new Button();
-    btn2.setText("Uruchomienie menu");
-    btn2.setOnAction((event) -> {
-        TrzeciaFormatka.pokaz();        
-    });
-   
-    Button btn3 = new Button();
-    btn3.setText("Test paska postępu");
-    btn3.setOnAction((event) -> {
-        CzwartaFormatka.pokaz();
-    });
-
-    Button btn4 = new Button();
-    btn4.setText("Odnoga projektu nr 2");
-    btn4.setOnAction((event) -> {
-        GlownaKlasa2.pokaz();
-    });
-
-    Button btn5 = new Button();
-    btn5.setText("Odnoga projektu nr 3");
-    btn5.setOnAction((event) -> {
-        GlownaKlasa3.pokaz();
-    });
-
-    Button btn6 = new Button();
-    btn6.setText("Piata formatka");
-    btn6.setOnAction((event) -> {
-        PiataFormatka.pokaz();
-    });*/ // zbedne bo juz jest menubutton
 // tablica nazw opcji
     String[] nazwyOpcji = new String[] {
-	"Canvas", "Uruchomienie menu", "Test paska postępu", "Odnoga projektu nr 2",
-	"Odnoga projektu nr 3", "Wprowadzanie danych osob", "Koniec programu"};
+	"Canvas", "Uruchomienie menu", "Test paska postępu", 
+	"Odnoga projektu nr 2",
+	"Komponent Suwak", "Wprowadzanie danych osob", "Koniec programu"};
 //komponent MenuButton:
     MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
     for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
-	mITab[ii] = new MenuItem(nazwyOpcji[ii]);
+	  mITab[ii] = new MenuItem(nazwyOpcji[ii]);
     }
     MenuButton mButton = new MenuButton("Opcje", null, mITab);
     HBox hbox = new HBox(mButton);
@@ -94,7 +58,7 @@ final static int LICZBA_ITEM_MENU = 7;
 			}); break;
 		case 2:
 			mITab[ii].setOnAction(event -> {
-			        PasekPostepuFrm.pokaz();
+		        PasekPostepuFrm.pokaz();
 			}); break;
 		case 3:	   
 			mITab[ii].setOnAction(event -> {
@@ -119,7 +83,7 @@ final static int LICZBA_ITEM_MENU = 7;
     flow.setVgap(8);
     flow.setHgap(4);
     flow.setPrefWrapLength(300); // preferred width = 300
-    flow.getChildren().addAll(/*btn1, btn2, btn3, btn4, btn5, btn6, */hbox);
+    flow.getChildren().addAll(hbox);
     primaryStage.setScene(new Scene(flow, 500, 550));
     primaryStage.show();
   }

@@ -17,10 +17,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javajava.JavaJava;
+import narzedzia.Pomocnicze;
 
 public class GlowneMenuFrm {
-	final static int LICZBA_ITEM_MENU = 6;
-
 	public static void pokaz(Stage glowneStage) {
 		Stage formatka3;
 		if (glowneStage == null) {
@@ -46,14 +45,16 @@ public class GlowneMenuFrm {
 		checkoutMenu.getItems().add(opcja2MenuItem);
 
 		// tablica nazw opcji
-		String[] nazwyOpcji = new String[] { "Grafika", "Uruchomienie menu", "Test paska postępu",
-				"Odnoga projektu nr 2", "Odnoga projektu nr 3", "Edycja danych osoby" };
+		String[] nazwyOpcji = new String[] { "Grafika", 
+				"Menu kontekstowe (przyklad)", "Test paska postępu",
+				"Odnoga projektu nr 2", "Komponent Suwak", "Edycja danych osoby" };
+		int liczbaItemMenu = nazwyOpcji.length;
 		// komponent MenuButton:
-		MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
-		for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
+		MenuItem mITab[] = new MenuItem[liczbaItemMenu];
+		for (int ii = 0; ii < liczbaItemMenu; ii++) {
 			mITab[ii] = new MenuItem(nazwyOpcji[ii]);
 		}
-		for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
+		for (int ii = 0; ii < liczbaItemMenu; ii++) {
 			switch (ii) {
 			case 0:
 				mITab[ii].setOnAction(event -> {
@@ -63,7 +64,7 @@ public class GlowneMenuFrm {
 				break;
 			case 1:
 				mITab[ii].setOnAction(event -> {
-					// TrzeciaFormatka.pokaz(); - to jest ona sama, więc na razie wyłączamy ten item
+					KontekstoweMenuFrm.pokaz();
 				});
 				break;
 			case 2:
