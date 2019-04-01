@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javajava.JavaJava;
 import narzedzia.Pomocnicze;
+import nowe.TextAreaZTextEdit2Frm;
 
 public class GlowneMenuFrm {
 	public static void pokaz(Stage glowneStage) {
@@ -27,7 +28,7 @@ public class GlowneMenuFrm {
 		} else {
 			formatka3 = glowneStage;
 		}
-		formatka3.setTitle("Trzecia formatka");
+		formatka3.setTitle("Glowna formatka programu");
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root, 600, 650, Color.LIGHTGREEN);
 
@@ -45,7 +46,7 @@ public class GlowneMenuFrm {
 		checkoutMenu.getItems().add(opcja2MenuItem);
 
 		// tablica nazw opcji
-		String[] nazwyOpcji = new String[] { "Grafika", 
+		String[] nazwyOpcji = new String[] { "Pobranie danych z Sieci", 
 				"Menu kontekstowe (przyklad)", "Test paska postępu",
 				"Odnoga projektu nr 2", "Komponent Suwak", "Edycja danych osoby" };
 		int liczbaItemMenu = nazwyOpcji.length;
@@ -58,8 +59,7 @@ public class GlowneMenuFrm {
 			switch (ii) {
 			case 0:
 				mITab[ii].setOnAction(event -> {
-					PlotnoFrm.pokaz(0);
-					PlotnoFrm.pokaz(1);
+					TextAreaZTextEdit2Frm te2frm = new TextAreaZTextEdit2Frm("Pobranie zrodla strony");
 				});
 				break;
 			case 1:
