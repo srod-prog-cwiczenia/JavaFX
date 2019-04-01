@@ -6,6 +6,8 @@ import java.util.Arrays;
 import helper.Analiza;
 import helper.AnalizaDialog;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -65,8 +67,12 @@ public class GlownaKlasa2 {
 		przycisk7.setOnAction((event) -> {
 			TextAreaZTextEditFrm.pokazArrayListLancuchow(
 					new ArrayList<String>(
-  				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), ""
-  				      );
+  				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), "",
+					    new EventHandler<ActionEvent>() {
+						  public void handle(ActionEvent event) {
+						  TextAreaZTextEditFrm.dopiszDoTextArea(TextAreaZTextEditFrm.getTextField());
+						  TextAreaZTextEditFrm.setTextField("");
+						  }});
 		});
 
 		Button btnWyjscie = new Button("Wyjscie");
