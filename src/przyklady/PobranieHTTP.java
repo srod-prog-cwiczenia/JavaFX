@@ -28,7 +28,7 @@ public class PobranieHTTP extends TextAreaZTextEdit2Frm {
 //DataInputStream(uc.getInputStream()));
         	String line;
         	while ((line = d.readLine()) != null) {
-        		kolekcja.add(line);
+        		kolekcja.add(line + "\n");
         	}
         	pokazArrayListLancuchow(kolekcja);
         } catch (Exception e) {e.printStackTrace(); }

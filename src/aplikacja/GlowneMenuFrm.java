@@ -92,7 +92,7 @@ public class GlowneMenuFrm {
 		}
 
 		// File menu - new, save, exit
-		Menu fileMenu = new Menu("Opcje skopiowane z glownej formatki");
+		Menu fileMenu = new Menu("Przeglad komponentow");
 		MenuItem exitMenuItem = new MenuItem("Wyjscie");
 		exitMenuItem.setOnAction(actionEvent -> formatka3.close());
 
@@ -126,7 +126,7 @@ public class GlowneMenuFrm {
 				new CheckMenuItem("Opcja 3"));
 
 		plotnoMenu.getItems().add(podmenuMnu);
-///// nowe:
+		
 		Menu mnuPrzykladyJava = new Menu("Przyklady Java"); 
 		Menu mnuPrzykladyJava1 = new Menu("Podmenu"); 
 		mnuPrzykladyJava.getItems().add(mnuPrzykladyJava1);
@@ -136,7 +136,6 @@ public class GlowneMenuFrm {
 			JavaJava.start();
 		});
 
-/////
 		menuBar.getMenus().addAll(fileMenu, checkoutMenu, plotnoMenu, mnuPrzykladyJava);
 
 		formatka3.setScene(scene);

@@ -45,8 +45,14 @@ public class TextAreaZTextEdit2Frm {
 			  }
 	        );	          
 		    vbox = new VBox(textField, btnAkceptuj);
-		    hbox = new HBox(textArea, vbox);
-		    scene = new Scene(hbox, 650, 450);
+		    //hbox = new HBox(textArea, vbox);
+		    /**
+		    * vbox2 by pole edycyjne zajmowalo caly jeden poziom
+		    * zmienna vbox2 jest poki co lokalna, ale moze byc rownie
+		    * dobrze polem klasy.
+		    */
+		    VBox vbox2 = new VBox(textArea, vbox);
+		    scene = new Scene(vbox2, 650, 450);
 		    formatkaN2.setScene(scene);
 		    formatkaN2.show();
     }
