@@ -59,7 +59,7 @@ public class GlowneMenuFrm {
 			switch (ii) {
 			case 0:
 				mITab[ii].setOnAction(event -> {
-					TextAreaZTextEdit2Frm te2frm = new TextAreaZTextEdit2Frm("Pobranie zrodla strony");
+					PobranieHTTP te2frm = new PobranieHTTP("Pobranie zrodla strony");
 				});
 				break;
 			case 1:

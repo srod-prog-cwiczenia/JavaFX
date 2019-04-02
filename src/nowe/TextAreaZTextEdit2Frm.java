@@ -40,9 +40,6 @@ public class TextAreaZTextEdit2Frm {
 	        btnAkceptuj = new Button("Akceptuj tekst");
 	        btnAkceptuj.setOnAction(new EventHandler<ActionEvent>() {
 				  public void handle(ActionEvent event) {
-/**
- * TODO: niestety, tutaj nie dziala wirtualizacja tej metody...
- */
 					  akcjaBtnAkceptuj();
 			       }
 			  }
