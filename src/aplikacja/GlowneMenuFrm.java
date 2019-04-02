@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javajava.JavaJava;
 import narzedzia.Pomocnicze;
 import nowe.TextAreaZTextEdit2Frm;
+import przyklady.PobranieHTTP;
 
 public class GlowneMenuFrm {
 	public static void pokaz(Stage glowneStage) {
