@@ -8,6 +8,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,6 +16,10 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class KontekstoweMenuFrm {
+    //TODO: zmienne w klasie ktore dotycza tylko kolka to chyba nienajlepszy pomysl?
+	public static double orgSceneX, orgSceneY;
+	public static double orgTranslateX, orgTranslateY;
+	     
 	public static void pokaz() {
 		Stage formatkaMK = new Stage();
 		formatkaMK.setTitle("Prezentacja menu kontekstowego");
@@ -56,6 +61,35 @@ public class KontekstoweMenuFrm {
 			}
 		});
 
+/**
+ * handlery do przeciagania myszka:		
+ */
+		EventHandler<MouseEvent> kolkoOnMousePressedEventHandler = 
+			new EventHandler<MouseEvent>() {
+		        @Override
+		        public void handle(MouseEvent t) {
+		            orgSceneX = t.getSceneX();
+		            orgSceneY = t.getSceneY();
+		            orgTranslateX = ((Circle)(t.getSource())).getTranslateX();
+		            orgTranslateY = ((Circle)(t.getSource())).getTranslateY();
+		        }
+		    };
+		     
+	    EventHandler<MouseEvent> kolkoOnMouseDraggedEventHandler = 
+	    	new EventHandler<MouseEvent>() {
+		        @Override
+		        public void handle(MouseEvent t) {
+		            double offsetX = t.getSceneX() - orgSceneX;
+		            double offsetY = t.getSceneY() - orgSceneY;
+		            double newTranslateX = orgTranslateX + offsetX;
+		            double newTranslateY = orgTranslateY + offsetY;
+		             
+		            ((Circle)(t.getSource())).setTranslateX(newTranslateX);
+		            ((Circle)(t.getSource())).setTranslateY(newTranslateY);
+		        }
+	    };		
+	    kolko.setOnMousePressed(kolkoOnMousePressedEventHandler);
+	    kolko.setOnMouseDragged(kolkoOnMouseDraggedEventHandler);
 		Scene scene = new Scene(root, 600, 300);
 		formatkaMK.setScene(scene);
 		formatkaMK.show();

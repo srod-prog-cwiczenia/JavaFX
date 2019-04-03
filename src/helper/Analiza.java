@@ -53,11 +53,11 @@ public class Analiza {
 		zapiszRezultat(skreslone, ocenaKolor);
 		return ocenaKolor;
 	}
-	public Kolor sprawdz() {
+	public void wykonajAnalize() {
 		boolean skreslone[] = new boolean [rozmiar + 1];
 		for (int ii = 1; ii <= rozmiar; ii++) {
 			skreslone[ii] = false;
 		}
-		return ocena(skreslone);
+		ocena(skreslone);
 	}
 }
