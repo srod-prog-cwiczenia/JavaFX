@@ -36,7 +36,7 @@ public class JavaJava {
 		  }
 		  case 5: {
 			ProsteMenu mn2 = new ProsteMenu(new String[]{"Proba 1", "Mapy", "Test regexp", 
-	"Klasy wewnetrzne", "Hasz zbior", "Wyjatki (wlasne i nie tylko)"}, sc1);
+	"Klasy wewnetrzne", "Hasz zbior", "Wyjatki (wlasne i nie tylko)", "Refleksja"}, sc1);
 			int iii2 = mn2.wybierz();
 			switch (iii2) {
 				case 1: {
@@ -77,6 +77,10 @@ public class JavaJava {
 				}
 				case 6: {
 					PrzykladWyjatki.run(sc1);
+					break;
+				}
+				case 7: {
+					PrzykladRefleksji.run(sc1);
 					break;
 				}
 			}
