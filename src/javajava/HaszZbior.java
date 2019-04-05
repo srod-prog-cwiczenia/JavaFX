@@ -18,8 +18,8 @@ public class HaszZbior {
         	System.out.println("Zbior zawiera slowo Kot albo nie:" + h.contains("Kot")); 
   
         // Removing items from HashSet using remove() 
-        	h.remove("Pies"); 
-        	System.out.println("Lista po usunieciu slowa Pies:" + h); 
+        	h.remove("Kot"); 
+        	System.out.println("Lista po usunieciu slowa Kot:" + h); 
   
         // Iterating over hash set items 
         	System.out.println("Iterujemy po liscie:"); 
