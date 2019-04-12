@@ -1,15 +1,19 @@
 package aplikacja;
-
-public class OsobaKlasaZewn {
-
+/**
+ * 
+ * prawdopodobnie ta klasa nie jest juz uzywana, ale nalezy to sprawdzic
+ *
+ */
+public class OsobaKlasaNieuzywana {
+	
     private String imie = null;
     private String nazwisko = null;
     private String komentarz = null;
 
-    public OsobaKlasaZewn() {
+    public OsobaKlasaNieuzywana() {
     }
 
-    public OsobaKlasaZewn(String imie, String nazwisko, String komentarz) {
+    public OsobaKlasaNieuzywana(String imie, String nazwisko, String komentarz) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.komentarz = komentarz;

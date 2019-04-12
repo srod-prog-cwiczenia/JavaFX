@@ -1,5 +1,10 @@
 package aplikacja;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.Duration;
 
 import javafx.animation.KeyFrame;
@@ -27,8 +32,44 @@ import java.util.HashSet;
 
 
 public class EdycjaOsobyFrm {
-	static class OsobaKlasaWewn implements Comparable<OsobaKlasaWewn> {
+	public static class OsobaKlasaWewn implements Comparable<OsobaKlasaWewn>, Serializable {
+		/**
+		 * to ponizej wymagane przez interface Serializable 
+		 */
+		private static final long serialVersionUID = -3709610380471390993L;
 		String imie, nazwisko, komentarz;
+
+		public OsobaKlasaWewn() {}
+		
+	    public OsobaKlasaWewn(String imie, String nazwisko, String komentarz) {
+	        this.imie = imie;
+	        this.nazwisko = nazwisko;
+	        this.komentarz = komentarz;
+	    }
+
+		public String getImie() {
+			return imie;
+		}
+
+		public void setImie(String imie) {
+			this.imie = imie;
+		}
+
+		public String getNazwisko() {
+			return nazwisko;
+		}
+
+		public void setNazwisko(String nazwisko) {
+			this.nazwisko = nazwisko;
+		}
+
+		public String getKomentarz() {
+			return komentarz;
+		}
+
+		public void setKomentarz(String komentarz) {
+			this.komentarz = komentarz;
+		}
 
 		@Override
 		public String toString() {
@@ -124,7 +165,7 @@ public class EdycjaOsobyFrm {
 			komentarz.setText("");
 		});
 //Zdefiniowanie przycisku Wyslij
-		Button btnWyslij = new Button("Wyslij");
+		Button btnWyslij = new Button("Akceptuj");
 		GridPane.setConstraints(btnWyslij, 1, 0);
 		grid.getChildren().add(btnWyslij);
 //akcja przycisku Wyslij:
@@ -171,14 +212,35 @@ public class EdycjaOsobyFrm {
 		grid.getChildren().add(btnPokazGrid);
 //akcja przycisku PokazGrid:
 		btnPokazGrid.setOnAction((event) -> {
-			List<OsobaKlasaZewn> kolekcjaPersony = new ArrayList<OsobaKlasaZewn>();
-			for (OsobaKlasaWewn oso: kolekcja) {
-				kolekcjaPersony.add(new OsobaKlasaZewn(oso.imie, oso.nazwisko, oso.komentarz));				
-			}
-		    ObservableList<OsobaKlasaZewn> persony = FXCollections.observableArrayList(kolekcjaPersony);		     
-		   	TableWidokFrm.pokaz(persony);
+		   	TableWidokFrm.pokaz(FXCollections.observableArrayList(kolekcja));		   	
 		});
 		
+		//Zdefiniowanie przycisku Zapisz
+		Button btnZapisz = new Button("Zapisz");
+		GridPane.setConstraints(btnZapisz, 1, 6);
+		grid.getChildren().add(btnZapisz);
+		//TODO: oprogramowac odczyt (nie mam juz na to czasu :) )
+//akcja przycisku Zapisz:
+		btnZapisz.setOnAction((event) -> {
+			FileOutputStream fos = null;
+			ObjectOutputStream oos = null;
+			try {
+				fos= new FileOutputStream("dumpdump.ser"); 
+		        oos = new ObjectOutputStream(fos); 
+   		        oos.writeObject(kolekcja);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (oos != null) oos.close();
+				} catch (IOException e) {}
+				try {
+					if (fos != null) fos.close();
+				} catch (IOException e) {}
+			}
+		});
 		
 		Scene scene = new Scene(grid, 400, 350);
 		formatka5.setScene(scene);

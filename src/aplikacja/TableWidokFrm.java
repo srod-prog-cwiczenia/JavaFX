@@ -19,6 +19,9 @@ import javafx.scene.layout.StackPane;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
 import java.util.List;
+
+import aplikacja.EdycjaOsobyFrm.OsobaKlasaWewn;
+
 import java.util.Collections;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -29,35 +32,39 @@ public class TableWidokFrm {
 	/**
 	 * To jest nieuzywana zmienna, tylko do testow
 	 */
-  private final static ObservableList<OsobaKlasaZewn> data =
+  private final static ObservableList<OsobaKlasaWewn> data =
     FXCollections.observableArrayList(
-	  new OsobaKlasaZewn("Anna", "Zajdel", "stud"),
-      new OsobaKlasaZewn("Beata", "Xyros", "prac"),
-      new OsobaKlasaZewn("Celica", "Wyka", "uczen"),
-      new OsobaKlasaZewn("Dorota", "Ypsylon", "prac"),
-      new OsobaKlasaZewn("Ewa", "Vitali", "stud")
+	  new OsobaKlasaWewn("Anna", "Zajdel", "stud"),
+      new OsobaKlasaWewn("Beata", "Xyros", "prac"),
+      new OsobaKlasaWewn("Celica", "Wyka", "uczen"),
+      new OsobaKlasaWewn("Dorota", "Ypsylon", "prac"),
+      new OsobaKlasaWewn("Ewa", "Vitali", "stud")
     );   
 	
-  public static void pokaz(ObservableList<OsobaKlasaZewn> persony) {
+public static void pokaz(ObservableList<OsobaKlasaWewn> persony) {
       Stage formatka6 = new Stage();
-      formatka6.setTitle("6 formatka");
+      formatka6.setTitle("Przegladanie grida z osobami");
       StackPane root6 = new StackPane();
 
-      TableView tableView = new TableView();
-      TableColumn<String, OsobaKlasaZewn> column1 = new TableColumn<String, OsobaKlasaZewn>("Imie");
-      column1.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("imie"));
+      TableView<OsobaKlasaWewn> tableView = new TableView<>();
+      TableColumn<OsobaKlasaWewn, String> column1 = new TableColumn<OsobaKlasaWewn, String>("Imie");
+      column1.setCellValueFactory(new PropertyValueFactory<OsobaKlasaWewn, String>("imie"));
 
-      TableColumn<String, OsobaKlasaZewn> column2 = new TableColumn<String, OsobaKlasaZewn>("Nazwisko");
-      column2.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("nazwisko"));
+      TableColumn<OsobaKlasaWewn, String> column2 = new TableColumn<OsobaKlasaWewn, String>("Nazwisko");
+      column2.setCellValueFactory(new PropertyValueFactory<OsobaKlasaWewn, String>("nazwisko"));
 
-      TableColumn<String, OsobaKlasaZewn> column3 = new TableColumn<String, OsobaKlasaZewn>("Komentarz");
-      column3.setCellValueFactory(new PropertyValueFactory<String, OsobaKlasaZewn>("komentarz"));
-
-//to do wyjasnienia czemu wychodzi SzostaFormatka.java uses unchecked or unsafe operations
-//po odkomentowaniu tego co ponizej:
-      
-      tableView.getColumns().addAll(column1, column2, column3);
+      TableColumn<OsobaKlasaWewn, String> column3 = new TableColumn<OsobaKlasaWewn, String>("Komentarz");
+      column3.setCellValueFactory(new PropertyValueFactory<OsobaKlasaWewn, String>("komentarz"));
+     
+      tableView.getColumns().add(column1);
+      tableView.getColumns().add(column2);
+      tableView.getColumns().add(column3);
       tableView.setEditable(true);
+/**TODO: jak dalem setAll(columna1,...) to wymagal 
+      //@SuppressWarnings("unchecked") aby nie wychodzil warning - dlaczego?
+      
+* 
+*/
       //tableView.setItems(data);
       tableView.setItems(persony);
       
