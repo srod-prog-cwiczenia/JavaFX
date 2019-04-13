@@ -1,8 +1,11 @@
 package aplikacja;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.Duration;
@@ -17,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
 import nowe.ObszarTekstowy;
@@ -194,12 +198,12 @@ public class EdycjaOsobyFrm {
 //			List<String> lancuchy = 
 //to nie chce sie przekomilowac:     		kolekcja.stream().map(object -> Osoba.toString(object, null)).collect(Collectors.toList());
 	        List<String> lLancuchy = new ArrayList<String>();
-	        lLancuchy.add(Pomocnicze.zbudujNaglowek("Array list", 70) + "\n");
+	        lLancuchy.add(Pomocnicze.zbudujNaglowekStringBuilder("Array list", 70) + "\n");
 	        for (OsobaKlasaWewn oso : kolekcja) {
 	        	lLancuchy.add(oso.toString() + "\n");
 	        };
    			zbiorOso.addAll(kolekcja);
-   			lLancuchy.add(Pomocnicze.zbudujNaglowek("Hash set", 70) + "\n");
+   			lLancuchy.add(Pomocnicze.zbudujNaglowekStringBuilder("Hash set", 70) + "\n");
    			for (OsobaKlasaWewn oso : zbiorOso) {
 	        	lLancuchy.add(oso.toString() + "\n");
 	        };
@@ -217,15 +221,26 @@ public class EdycjaOsobyFrm {
 		
 		//Zdefiniowanie przycisku Zapisz
 		Button btnZapisz = new Button("Zapisz");
-		GridPane.setConstraints(btnZapisz, 1, 6);
+		GridPane.setConstraints(btnZapisz, 1, 7);
 		grid.getChildren().add(btnZapisz);
 		//TODO: oprogramowac odczyt (nie mam juz na to czasu :) )
 //akcja przycisku Zapisz:
 		btnZapisz.setOnAction((event) -> {
+			FileChooser wybierakPliku = new FileChooser();
+            FileChooser.ExtensionFilter filtrRozszerzen = new FileChooser.ExtensionFilter("Pliki DAT (*.dat)", "*.dat");
+            wybierakPliku.getExtensionFilters().add(filtrRozszerzen);
+            wybierakPliku.setInitialDirectory(new File(System.getProperty("user.home")));
+            wybierakPliku.setInitialFileName("serializacjaOsobyJava.dat");
+
+            File plik = wybierakPliku.showSaveDialog(formatka5);
+            
+            if (plik == null) {
+            	return;
+            }
 			FileOutputStream fos = null;
 			ObjectOutputStream oos = null;
 			try {
-				fos= new FileOutputStream("dumpdump.ser"); 
+				fos = new FileOutputStream(plik); 
 		        oos = new ObjectOutputStream(fos); 
    		        oos.writeObject(kolekcja);
 			} catch (FileNotFoundException e) {
@@ -241,7 +256,51 @@ public class EdycjaOsobyFrm {
 				} catch (IOException e) {}
 			}
 		});
-		
+		//Zdefiniowanie przycisku Wczytaj
+		Button btnWczytaj = new Button("Wczytaj");
+		GridPane.setConstraints(btnWczytaj, 1, 6);
+		grid.getChildren().add(btnWczytaj);
+//akcja przycisku Wczytaj:
+		btnWczytaj.setOnAction((event) -> {
+			FileChooser wybierakPliku = new FileChooser();
+            FileChooser.ExtensionFilter filtrRozszerzen = new FileChooser.ExtensionFilter("Pliki DAT (*.dat)", "*.dat");
+            wybierakPliku.getExtensionFilters().add(filtrRozszerzen);
+            wybierakPliku.setInitialDirectory(new File(System.getProperty("user.home")));
+            wybierakPliku.setInitialFileName("serializacjaOsobyJava.dat");
+            File wybranyPlik = wybierakPliku.showOpenDialog(formatka5);
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+            	fis = new FileInputStream(wybranyPlik);  
+            	ois = new ObjectInputStream(fis);
+            	kolekcja.clear();
+/** instrukcja taka jak ponizej dziala ale generuje warning,
+ *  spowodowany rzutowaniem parametru generycznego na Collection
+ *  okazuje sie ze mozna to zastapic kodem ponizej ale pewnie dziala on duzo
+ *  wolniej...? 
+ *             	kolekcja.addAll((ArrayList<OsobaKlasaWewn>) ois.readObject());
+ */
+            	Object obiekt = ois.readObject();
+            	ArrayList<?> kolekcjaObiektow = (ArrayList<?>) obiekt;
+            	for (Object oo : kolekcjaObiektow) {
+            		kolekcja.add((OsobaKlasaWewn) oo);
+            	}
+            } catch (FileNotFoundException e) {
+              e.printStackTrace();
+            } catch (IOException e) {
+              e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+              e.printStackTrace();
+            } finally {
+              try {
+                if (ois != null) ois.close();
+              } catch (IOException e) {}
+              try {
+                if (fis != null) fis.close();
+              } catch (IOException e) {}
+            }            
+		});
+
 		Scene scene = new Scene(grid, 400, 350);
 		formatka5.setScene(scene);
 		formatka5.show();

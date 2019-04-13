@@ -13,12 +13,27 @@ public class Pomocnicze {
 		alert.showAndWait();
 	}
 	public static String zbudujNaglowek(String txt, int dlugosc) {
-//TODO przerobic to na StringBuilder
 		int ile = (dlugosc - txt.length()) / 2;
 		if (ile < 0) ile = 0;
 		String lancuchSeparator = new String(new char[ile]).replace("\0", "-"); 
 	    lancuchSeparator += txt; 
         lancuchSeparator += (new String(new char[ile]).replace("\0", "-"));
         return lancuchSeparator;
+	}
+	public static String zbudujNaglowekStringBuilder(String txt, int dlugosc) {
+/**
+ * nowa metoda bazujaca na stringbuilderze
+ */
+		int ile = (dlugosc - txt.length()) / 2;
+		if (ile < 0) ile = 0;
+		StringBuilder lancuchSeparator = new StringBuilder(dlugosc);
+		for (int qq = 0; qq < ile; qq++) {
+			lancuchSeparator.append('-');
+		};
+	    lancuchSeparator.append(txt); 
+		for (int qq = 0; qq < ile; qq++) {
+			lancuchSeparator.append('-');
+		};
+        return lancuchSeparator.toString();
 	}
 }

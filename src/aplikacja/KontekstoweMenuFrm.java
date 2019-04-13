@@ -20,6 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import narzedzia.Pomocnicze;
 
 public class KontekstoweMenuFrm {
     //TODO: zmienne w klasie ktore dotycza tylko kolka to chyba nienajlepszy pomysl?
@@ -68,14 +69,7 @@ public class KontekstoweMenuFrm {
         final Text napis1 = new Text("Prosze wybrac kolor");
         napis1.setFont(Font.font ("Verdana", 20));
         napis1.setFill(wybierakKolorow.getValue());
-/*
-        root.getChildren().add(wybierakKolorow);
-        colorPicker.setOnAction(new EventHandler() {
-            public void handle(Event t) {
-                text.setFill(colorPicker.getValue());               
-            }
-        }); */ //TODO: na razie w ukryciu bo jest stale widoczny, trzeba to potem oprogramowac		
-		
+	
 		
 // stworzenie ContextMenu
 		ContextMenu contextMenu = new ContextMenu();
@@ -94,9 +88,26 @@ public class KontekstoweMenuFrm {
 				label.setText("Wybrano opcję 2 menu kontekstowego");
 			}
 		});
+		MenuItem itemKolory = new MenuItem("Zmiana koloru");
+		itemKolory.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Pomocnicze.komunikat("TODO: edycja kolorow");
+//				root.getChildren().add(wybierakKolorow);
+//				wybierakKolorow.getValue();
+		        
+				//TODO: tu jeszcze trzeba dopracowac funkcjonowanie edycji kolorow
+//		        root.getChildren().remove(wybierakKolorow);
+	//	        wybierakKolorow.setOnAction(new EventHandler<ActionEvent>() {
+	//	            public void handle(ActionEvent t) {
+	//	                //text.setFill(colorPicker.getValue());               
+	//	            }
+	//	        });
+			}  
+		});
 	
 // dodajemy MenuItem do ContextMenu
-		contextMenu.getItems().addAll(item1, item2);
+		contextMenu.getItems().addAll(item1, item2, itemKolory);
 // akcja kiedy klikniemy prawym przyciskiem myszki na kolko
 		for (Circle kolko : kolekcjaKolek)
 			kolko.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

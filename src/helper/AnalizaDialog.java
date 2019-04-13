@@ -21,6 +21,13 @@ public class AnalizaDialog {
 		}
 		return stan2bu.toString();
 	}
+	static public boolean koncowyStan(String stan, int aLiczba) {
+		boolean odp = true;
+		for (int qq = 0; qq < aLiczba; qq++) {
+			odp = odp && stan.charAt(qq) == 'X';
+		}
+		return odp;
+	}
 	static public void run() {
 		Scanner sc1 = new Scanner(System.in);
 		System.out.println("Liczba? ");
@@ -32,11 +39,6 @@ public class AnalizaDialog {
 		String stan = new String(charArray);
 		do {
 			System.out.println(stan + " " + analiza.rezultatyMap.get(stan).toString());
-			System.out.println("Dalej? 1 - nie, inna liczba - tak");
-			int odp = sc1.nextInt();
-			if (odp == 1) {
-				break;
-			}	
 			switch (analiza.rezultatyMap.get(stan)) {
 				case BIALY: {
 					System.out.println("Proponowane moje odpowiedzi:");
@@ -50,18 +52,18 @@ public class AnalizaDialog {
 						} 
 					}
 					System.out.println("Jaka wybrac?");
-					odp = sc1.nextInt();
+					int odp = sc1.nextInt();
 					stan = zastosowanie(stan, odp);
 					break;
 				}
 				case CZARNY: {
 					System.out.println("Jaka wybrac?");
-					odp = sc1.nextInt();
+					int odp = sc1.nextInt();
 					stan = zastosowanie(stan, odp);
 					break;
 				}
 			}
-		} while (true);	
+		} while (!koncowyStan(stan, liczba));	
 		//TODO: to do uzupelnienia
 		sc1.close();
 	}  
