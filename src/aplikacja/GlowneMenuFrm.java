@@ -2,6 +2,10 @@ package aplikacja;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -18,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javajava.JavaJava;
 import narzedzia.Pomocnicze;
+import nowe.TextAreaConsoleFrm;
 import nowe.TextAreaZTextEdit2Frm;
 import przyklady.PobranieHTTP;
 
@@ -130,12 +135,23 @@ public class GlowneMenuFrm {
 		Menu mnuPrzykladyJava = new Menu("Przyklady Java"); 
 		Menu mnuPrzykladyJava1 = new Menu("Podmenu"); 
 		mnuPrzykladyJava.getItems().add(mnuPrzykladyJava1);
+
 		MenuItem mnuItemJavaJava = new MenuItem("JavaJava"); 
-		mnuPrzykladyJava1.getItems().add(mnuItemJavaJava);
 		mnuItemJavaJava.setOnAction((event) -> {
 			JavaJava.start();
 		});
+		mnuPrzykladyJava1.getItems().add(mnuItemJavaJava);
 
+		MenuItem mnuGraphConsole = new MenuItem("Graficzna emulacja konsoli - prezentacja"); 
+		mnuGraphConsole.setOnAction((event) -> {
+			TextAreaConsoleFrm cons = new TextAreaConsoleFrm();
+			List<String> kolekcja = new ArrayList<String>();
+			kolekcja.add("Napis nr 1");
+			kolekcja.add("Napis nr 2");
+			cons.pokaz(kolekcja);
+		});
+		mnuPrzykladyJava1.getItems().add(mnuGraphConsole);
+		
 		menuBar.getMenus().addAll(fileMenu, checkoutMenu, plotnoMenu, mnuPrzykladyJava);
 
 		formatka3.setScene(scene);
