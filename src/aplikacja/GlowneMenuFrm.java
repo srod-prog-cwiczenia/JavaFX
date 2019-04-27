@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javajava.JavaJava;
 import narzedzia.Pomocnicze;
+import nowe.ObiektyGraficzneFrm;
 import nowe.TextAreaConsoleFrm;
 import nowe.TextAreaZTextEdit2Frm;
 import przyklady.PobranieHTTP;
@@ -126,11 +127,17 @@ public class GlowneMenuFrm {
 			}
 		});
 
-		Menu podmenuMnu = new Menu("Podmenu");
-		podmenuMnu.getItems().addAll(new CheckMenuItem("Opcja 1"), new CheckMenuItem("Opcja 2"),
-				new CheckMenuItem("Opcja 3"));
-
-		plotnoMenu.getItems().add(podmenuMnu);
+		Menu mnuPodmenuGrafikaMnu = new Menu("Podmenu (różne przyklady)"); 
+		plotnoMenu.getItems().add(mnuPodmenuGrafikaMnu);
+		MenuItem mnuPodmenuGrafikaMnu1 = new MenuItem("Obiekty graficzne"); 
+		mnuPodmenuGrafikaMnu1.setOnAction((event) -> {
+			ObiektyGraficzneFrm.pokaz();
+		});
+		MenuItem mnuPodmenuGrafikaMnu2 = new MenuItem("Opcja pusta"); 
+		mnuPodmenuGrafikaMnu2.setOnAction((event) -> {
+			Pomocnicze.komunikat("Do napisania");		
+		});
+		mnuPodmenuGrafikaMnu.getItems().addAll(mnuPodmenuGrafikaMnu1, mnuPodmenuGrafikaMnu2);
 		
 		Menu mnuPrzykladyJava = new Menu("Przyklady Java"); 
 		Menu mnuPrzykladyJava1 = new Menu("Podmenu"); 
@@ -151,6 +158,13 @@ public class GlowneMenuFrm {
 			cons.pokaz(kolekcja);
 		});
 		mnuPrzykladyJava1.getItems().add(mnuGraphConsole);
+		
+
+		Menu przykladCheckMenuMnu = new Menu("Przyklad checkmenu");
+		przykladCheckMenuMnu.getItems().addAll(new CheckMenuItem("Opcja 1"), new CheckMenuItem("Opcja 2"),
+				new CheckMenuItem("Opcja 3"));
+		mnuPrzykladyJava.getItems().add(przykladCheckMenuMnu);
+		
 		
 		menuBar.getMenus().addAll(fileMenu, checkoutMenu, plotnoMenu, mnuPrzykladyJava);
 
