@@ -8,6 +8,7 @@ import helper.AnalizaDialog;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -25,9 +26,25 @@ import przyklady.Strumienie;
 
 public class GlownaKlasa2 {
 
+	public static void pokazComboBox() {
+		Stage primaryStage = new Stage();
+		primaryStage.setTitle("Odnoga projektu numer 2");
+	    Scene scene = new Scene(new Group(), 450, 250);
+		Button przycisk1 = new Button("Akceptuj");
+		przycisk1.setOnAction((event) -> {
+//TODO: oprogramować to
+		});
+
+
+        Group grupa = (Group)scene.getRoot();
+        primaryStage.setScene(scene);
+        primaryStage.show();	
+	}
+	
 	public static void pokaz(boolean czyTilePane) {
 
 		Stage primaryStage = new Stage();
+		primaryStage.setTitle("Odnoga projektu numer 2");
 		Button przycisk1 = new Button("Uruchomienie listy " +
 				"przykladow z opisem tego co sie dzieje na konsoli");
 

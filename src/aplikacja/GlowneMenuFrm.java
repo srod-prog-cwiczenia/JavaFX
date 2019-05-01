@@ -156,6 +156,12 @@ public class GlowneMenuFrm {
 			kolekcja.add("Napis nr 1");
 			kolekcja.add("Napis nr 2");
 			cons.pokaz(kolekcja);
+			String wprowadzonyLancuch;
+			do {
+				wprowadzonyLancuch = cons.czytajLinie();
+				if (!wprowadzonyLancuch.isEmpty())
+					Pomocnicze.komunikat(wprowadzonyLancuch);
+			} while (!wprowadzonyLancuch.isEmpty());
 		});
 		mnuPrzykladyJava1.getItems().add(mnuGraphConsole);
 		
