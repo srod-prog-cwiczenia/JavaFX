@@ -68,3 +68,9 @@ public class AnalizaDialog {
 		sc1.close();
 	}  
 }
+/** pomocnicza sekwencja (może już nieaktualna?) do
+ * przetestowania funkcjonowania wybranych elementów tej klasy:
+ * Analiza analiza = new Analiza(10);
+ * Pomocnicze.komunikat(analiza.sprawdz().toString());
+ * Pomocnicze.komunikat("" + analiza.rezultatyMap.keySet().size());
+ * */

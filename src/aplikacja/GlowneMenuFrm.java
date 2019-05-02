@@ -44,11 +44,23 @@ public class GlowneMenuFrm {
 		root.setTop(menuBar);
 //block checkoutow:
 		Menu checkoutMenu = new Menu("Opcje programu");
-		CheckMenuItem opcja1MenuItem = new CheckMenuItem("Tilepane w Odnodze 2 programu");
+		CheckMenuItem opcja1MenuItem = new CheckMenuItem("Check Menu - próba 1");
 		opcja1MenuItem.setSelected(true);
 		checkoutMenu.getItems().add(opcja1MenuItem);
 
-		CheckMenuItem opcja2MenuItem = new CheckMenuItem("Opcja 2");
+		Menu odnoga2KonfiguracjaMenu = new Menu("Opcje wyświetlania formatki Odnoga 2 programu");
+		checkoutMenu.getItems().addAll(odnoga2KonfiguracjaMenu);
+		ToggleGroup grupaTG = new ToggleGroup();
+		RadioMenuItem odnoga2_1_Item = new RadioMenuItem("użyć TilePane");
+		odnoga2_1_Item.setToggleGroup(grupaTG);
+		RadioMenuItem odnoga2_2_Item = new RadioMenuItem("użyć FlowPane");
+		odnoga2_2_Item.setToggleGroup(grupaTG);
+		RadioMenuItem odnoga2_3_Item = new RadioMenuItem("użyć ComboBox");
+		odnoga2_3_Item.setToggleGroup(grupaTG);
+		odnoga2_3_Item.setSelected(true);
+		odnoga2KonfiguracjaMenu.getItems().addAll(odnoga2_1_Item, odnoga2_2_Item, odnoga2_3_Item);
+		
+		CheckMenuItem opcja2MenuItem = new CheckMenuItem("Check Menu - próba 2");
 		opcja2MenuItem.setSelected(true);
 		checkoutMenu.getItems().add(opcja2MenuItem);
 
@@ -81,7 +93,17 @@ public class GlowneMenuFrm {
 				break;
 			case 3:
 				mITab[ii].setOnAction(event -> {
-					GlownaKlasa2.pokaz(opcja1MenuItem.isSelected());
+					if (odnoga2_1_Item.isSelected())
+						GlownaKlasa2.pokaz(true);
+					else if (odnoga2_2_Item.isSelected()) 
+						GlownaKlasa2.pokaz(false);
+					else if (odnoga2_3_Item.isSelected())
+						GlownaKlasa2.pokazComboBox();
+					else
+					{
+						/*  TODO: jakiś wyjątek typu INTERNAL ERROR albo coś innego
+						 * */
+					}
 				});
 				break;
 			case 4:

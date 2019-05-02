@@ -11,34 +11,107 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
+import nowe.BazaDanych;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
 import nowe.TextAreaZTextEditFrm;
 import przyklady.Strumienie;
 
 public class GlownaKlasa2 {
+	public static String[] getTablicaOpisow() {
+		return new String[] 
+				{"Uruchomienie listy przykladow z opisem tego co sie dzieje na konsoli",
+				 "Uruchomienie Text Area",
+				 "Test strumieni",
+				 "Rekurencja",
+				 "Test mapy",
+				 "Uruchomienie TextAreaZTextEditFrm", 
+				 "Bazy danych - przykłady"
+				};
+	};
+	
+	public static void wybranaAkcja(int aNr, Stage aStage) {
+		switch (aNr) {
+		case 1:
+			//TODO: uporzadkowac te dwie metody ponizej
+			PrzykladyKonsolowe.akcja1();
+			Scena2.pokaz1(aStage);
+			break;
+		case 2:
+			ObszarTekstowy.pokaz();
+			break;
+		case 3:
+			Strumienie.przyklad1();
+			break;
+		case 4:
+			AnalizaDialog.run();
+			break;
+		case 5:
+			(new PrzykladMap()).przyklad1();
+			break;
+		case 6:
+			TextAreaZTextEditFrm.pokazArrayListLancuchow(
+					new ArrayList<String>(
+  				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), "",
+					    new EventHandler<ActionEvent>() {
+						  public void handle(ActionEvent event) {
+						  TextAreaZTextEditFrm.dopiszDoTextArea(TextAreaZTextEditFrm.getTextField());
+						  TextAreaZTextEditFrm.setTextField("");
+						  }});
+				break;
+			case 7: 
+				BazaDanych bd = new BazaDanych();
+				if (bd.isPoprawnie()) {
+					bd.testBazyDanych();
+					bd.zamknieciePolaczenia();
+				}	
+				break;
+		}
+	} 
 
 	public static void pokazComboBox() {
-		Stage primaryStage = new Stage();
-		primaryStage.setTitle("Odnoga projektu numer 2");
-	    Scene scene = new Scene(new Group(), 450, 250);
-		Button przycisk1 = new Button("Akceptuj");
-		przycisk1.setOnAction((event) -> {
-//TODO: oprogramować to
+		Stage stage = new Stage();
+		stage.setTitle("Odnoga projektu numer 2");
+        stage.setWidth(550);
+        stage.setHeight(550);
+		Scene scene = new Scene(new Group(), 550, 550);
+        ComboBox<String> cB = new ComboBox<String>();
+        cB.getItems().addAll(getTablicaOpisow());
+        Button btnAkceptuj = new Button("Akceptuj");
+		btnAkceptuj.setOnAction((event) -> {
+			int selItem = cB.getSelectionModel().getSelectedIndex();
+			if (selItem >= 0) {
+				wybranaAkcja(selItem + 1, stage);				
+			}
 		});
+		
+		Button btnWyjscie = new Button("Wyjście");
+		btnWyjscie.setOnAction((event) -> {
+			stage.close();
+		});
+		
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(cB, btnAkceptuj, btnWyjscie);
+        vbox.setSpacing(5);
 
+        HBox root = new HBox();
+        root.getChildren().add(vbox);
+        root.setSpacing(40);
 
-        Group grupa = (Group)scene.getRoot();
-        primaryStage.setScene(scene);
-        primaryStage.show();	
+        ((Group) scene.getRoot()).getChildren().add(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 	
 	public static void pokaz(boolean czyTilePane) {
@@ -49,49 +122,39 @@ public class GlownaKlasa2 {
 				"przykladow z opisem tego co sie dzieje na konsoli");
 
 		przycisk1.setOnAction((event) -> {
-			// Button was clicked, do something...
-			/*for (int ii = 0; ii < 10; ii++) {
-				System.out.println(ii + " ");
-			}*/ //TODO: uporzadkowac te dwie metody ponizej
-			PrzykladyKonsolowe.akcja1();
-			Scena2.pokaz1(primaryStage);
+			wybranaAkcja(1, primaryStage);
 		});
 
 		Button przycisk2 = new Button("Uruchomienie Text Area");
 		przycisk2.setOnAction((event) -> {
-			ObszarTekstowy.pokaz();
+			wybranaAkcja(2, primaryStage);
 		});
 		
 		Button przycisk3 = new Button("Test strumieni");
 		przycisk3.setOnAction((event) -> {
-			Strumienie.przyklad1();
+			wybranaAkcja(3, primaryStage);
 		});
 
 		Button przycisk4 = new Button("Rekurencja");
 		przycisk4.setOnAction((event) -> {
-			/*Analiza analiza = new Analiza(10);
-			Pomocnicze.komunikat(analiza.sprawdz().toString());
-			Pomocnicze.komunikat("" + analiza.rezultatyMap.keySet().size());*/
-			AnalizaDialog.run();
+			wybranaAkcja(4, primaryStage);
 		});
 
 		Button przycisk6 = new Button("Test mapy");
 		przycisk6.setOnAction((event) -> {
-			(new PrzykladMap()).przyklad1();
+			wybranaAkcja(5, primaryStage);
 		});
 
 		Button przycisk7 = new Button("Uruchomienie TextAreaZTextEditFrm");
 		przycisk7.setOnAction((event) -> {
-			TextAreaZTextEditFrm.pokazArrayListLancuchow(
-					new ArrayList<String>(
-  				      Arrays.asList("Linia nr 1", "Linia nr 2", "Linia nr 3")), "",
-					    new EventHandler<ActionEvent>() {
-						  public void handle(ActionEvent event) {
-						  TextAreaZTextEditFrm.dopiszDoTextArea(TextAreaZTextEditFrm.getTextField());
-						  TextAreaZTextEditFrm.setTextField("");
-						  }});
+			wybranaAkcja(6, primaryStage);
 		});
 
+		Button przycisk8 = new Button("Test bazy danych");
+		przycisk8.setOnAction((event) -> {
+			wybranaAkcja(7, primaryStage);
+		});
+		
 		Button btnWyjscie = new Button("Wyjscie");
   		btnWyjscie.setOnAction((event) -> {
 			primaryStage.close();
@@ -114,8 +177,7 @@ public class GlownaKlasa2 {
 
         HBox hboxRB = new HBox(radioButton1, radioButton2, radioButton3, radioButton4);
 
-	
-		Button przycisk5 = new Button("Sprawdz Radio Group");
+        Button przycisk5 = new Button("Sprawdz Radio Group");
 		przycisk5.setOnAction((event) -> {
 			RadioButton selectedRadioButton =
 			        (RadioButton) radioGroup.getSelectedToggle();
@@ -142,12 +204,12 @@ public class GlownaKlasa2 {
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
 		if (tp == null)
 			fp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, 
-					przycisk7, btnWyjscie);
+					przycisk3, przycisk4, przycisk6, 
+					przycisk7, przycisk8, hboxRB, przycisk5, btnWyjscie);
 		else 
 			tp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, hboxRB, przycisk5, przycisk6, 
-					przycisk7, btnWyjscie);
+					przycisk3, przycisk4, przycisk6, 
+					przycisk7, przycisk8, hboxRB, przycisk5, btnWyjscie);
 
 		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);
