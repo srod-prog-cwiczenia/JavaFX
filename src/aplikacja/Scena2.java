@@ -1,7 +1,5 @@
 package aplikacja;
 
-import java.awt.Insets;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +11,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Scena2 {
-
+/*
+ * nie wiem czy to jest gdzieś wykorzystywane, TODO: uporządkować to
+ * */
 	public static void pokaz1(Stage stage) {
     	GridPane grid = new GridPane();
 	    grid.setAlignment(Pos.CENTER);

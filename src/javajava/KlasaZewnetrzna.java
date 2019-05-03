@@ -17,20 +17,20 @@ public class KlasaZewnetrzna {
 
 	public static void localClassInstantiation(ArrayList<String> lArgs) {
 	    class LocalClass {
-		ArrayList<String> mLista;        	
-		public LocalClass(ArrayList<String> aLista) {
-			mLista = aLista;	
-		}
+	    	ArrayList<String> mLista;        	
+	    	public LocalClass(ArrayList<String> aLista) {
+	    		mLista = aLista;	
+	    	}
         	@Override
-		public String toString() {
-			String listString = "";			
-			for (String s : mLista) {
-			    listString += s + "\t";
-			}
-			return "Lista : " + listString;
+        	public String toString() {
+        		String listString = "";			
+        		for (String s : mLista) {
+        			listString += s + "\t";
+        		}
+        		return "Lista : " + listString;
         	}
 	    }   
-    	    LocalClass localClassInstance = new LocalClass(lArgs);
-    	    System.out.println(localClassInstance);
+    	LocalClass localClassInstance = new LocalClass(lArgs);
+    	System.out.println(localClassInstance);
 	}
 }

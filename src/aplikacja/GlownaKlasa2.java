@@ -46,7 +46,6 @@ public class GlownaKlasa2 {
 		case 1:
 			//TODO: uporzadkowac te dwie metody ponizej
 			PrzykladyKonsolowe.akcja1();
-			Scena2.pokaz1(aStage);
 			break;
 		case 2:
 			ObszarTekstowy.pokaz();

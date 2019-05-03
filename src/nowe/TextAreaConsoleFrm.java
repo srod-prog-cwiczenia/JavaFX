@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -43,30 +44,41 @@ public class TextAreaConsoleFrm {
 	  }
 	  public void pokaz(List<String> kolekcja) {
 	      for (String linia : kolekcja) {
-	    	  obszarTxt.appendText(linia);
+	    	  obszarTxt.appendText(linia + "\n");
 	      }
 	  }
-	  
+	  public void pokaz(String linia) {
+		  obszarTxt.appendText(linia + "\n");
+	  }
+	  public void pokaz(int aLiczba) {
+		  pokaz("" + aLiczba);
+	  }
 	  public void zamkniecieFormatki() {
 		  formatka.close();	  
 	  }
 	  public String czytajLinie() {
 		  /**
 		   * TODO: to jeszcze nie działa tak jak powinno
+		   * na razie używamy dialogu, póki co jakoś to działa
 		   */
 /*		  formatka.hide();
 		  formatka.showAndWait();
-		  return "TAK";
 */
 		  TextInputDialog dialog = new TextInputDialog("Podaj treść");
+		  dialog.setX(formatka.getX());
+		  dialog.setY(formatka.getY() + formatka.getHeight());
 		  dialog.setTitle("Podaj treść");
 		  dialog.setHeaderText("Podaj treść");
 		  dialog.setContentText("Podaj treść");
 
-		  // Traditional way to get the response value.
+		  // Typowa droga do otrzymania odpowiedzi:
 		  Optional<String> result = dialog.showAndWait();
 		  if (result.isPresent()) {
-			  obszarTxt.appendText(result.get());
+/*TODO: zmiana koloru tekstu w ten sposób niestety nie działa - dlaczego?
+ * 			  Region region = (Region) obszarTxt.lookup(".content");
+			  region.setStyle("-fx-background-color:red;");
+			  region.setStyle("-fx-text-color:red;");
+*/			  obszarTxt.appendText(result.get() + "\n");
 		      return result.get();
 		  } else {
 			  return "";
