@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
 import nowe.BazaDanych;
+import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
 import nowe.TextAreaZTextEditFrm;
@@ -37,7 +38,8 @@ public class GlownaKlasa2 {
 				 "Rekurencja",
 				 "Test mapy",
 				 "Uruchomienie TextAreaZTextEditFrm", 
-				 "Bazy danych - przykłady"
+				 "Bazy danych - przykłady",
+				 "Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)"
 				};
 	};
 	
@@ -75,6 +77,9 @@ public class GlownaKlasa2 {
 					bd.testBazyDanych();
 					bd.zamknieciePolaczenia();
 				}	
+				break;
+			case 8:
+				MieleniePliku.pobranieNazwyPliku(aStage);
 				break;
 		}
 	} 
@@ -153,6 +158,12 @@ public class GlownaKlasa2 {
 		przycisk8.setOnAction((event) -> {
 			wybranaAkcja(7, primaryStage);
 		});
+
+		Button przycisk9 = new Button("Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)");
+		przycisk8.setOnAction((event) -> {
+			wybranaAkcja(8, primaryStage);
+		});
+
 		
 		Button btnWyjscie = new Button("Wyjscie");
   		btnWyjscie.setOnAction((event) -> {
