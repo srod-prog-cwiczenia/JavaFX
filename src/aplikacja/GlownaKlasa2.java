@@ -160,7 +160,7 @@ public class GlownaKlasa2 {
 		});
 
 		Button przycisk9 = new Button("Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)");
-		przycisk8.setOnAction((event) -> {
+		przycisk9.setOnAction((event) -> {
 			wybranaAkcja(8, primaryStage);
 		});
 
@@ -215,11 +215,11 @@ public class GlownaKlasa2 {
 		if (tp == null)
 			fp.getChildren().addAll(przycisk1, przycisk2, 
 					przycisk3, przycisk4, przycisk6, 
-					przycisk7, przycisk8, hboxRB, przycisk5, btnWyjscie);
+					przycisk7, przycisk8, przycisk9, hboxRB, przycisk5, btnWyjscie);
 		else 
 			tp.getChildren().addAll(przycisk1, przycisk2, 
 					przycisk3, przycisk4, przycisk6, 
-					przycisk7, przycisk8, hboxRB, przycisk5, btnWyjscie);
+					przycisk7, przycisk8, przycisk9, hboxRB, przycisk5, btnWyjscie);
 
 		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);
