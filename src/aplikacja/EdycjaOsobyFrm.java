@@ -17,7 +17,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
@@ -30,6 +34,7 @@ import javafx.scene.layout.StackPane;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Collections;
 import java.util.HashSet;
@@ -262,6 +267,30 @@ public class EdycjaOsobyFrm {
 		grid.getChildren().add(btnWczytaj);
 //akcja przycisku Wczytaj:
 		btnWczytaj.setOnAction((event) -> {
+			boolean nadpisanie = false;
+			if (!kolekcja.isEmpty()) {
+				Alert customAlert = new Alert(AlertType.CONFIRMATION);
+				customAlert.setResizable(true);
+				customAlert.setX(50);
+				customAlert.setWidth(800); //TODO: z jakis powodow to nie dziala
+				customAlert.setTitle("W pamieci znajduje sie juz wczytana kolekcja " + kolekcja.size() + " osob.");
+				customAlert.setHeaderText("W pamieci znajduje sie juz wczytana kolekcja " + kolekcja.size() + " osob.");
+				customAlert.setContentText("Co chcesz zrobic?");
+				ButtonType buttonCA1 = new ButtonType("Dodac do niej zawartosc pliku");
+				ButtonType buttonCA2 = new ButtonType("Skasowac i nadpisac plikiem");
+				ButtonType buttonCACancel = new ButtonType("Wyjdz i nic nie rob", ButtonData.CANCEL_CLOSE);
+
+				customAlert.getButtonTypes().setAll(buttonCA1, buttonCA2, buttonCACancel);
+
+				Optional<ButtonType> wybranyKlawisz = customAlert.showAndWait();
+				if (wybranyKlawisz.get() == buttonCA1){
+					nadpisanie = false;
+				} else if (wybranyKlawisz.get() == buttonCA2) {
+					nadpisanie = true;
+				} else {
+			      return;
+				}
+			}	
 			FileChooser wybierakPliku = new FileChooser();
             FileChooser.ExtensionFilter filtrRozszerzen = new FileChooser.ExtensionFilter("Pliki DAT (*.dat)", "*.dat");
             wybierakPliku.getExtensionFilters().add(filtrRozszerzen);
@@ -273,7 +302,8 @@ public class EdycjaOsobyFrm {
             try {
             	fis = new FileInputStream(wybranyPlik);  
             	ois = new ObjectInputStream(fis);
-            	kolekcja.clear();
+            	if (nadpisanie)
+            		kolekcja.clear();
 /** instrukcja taka jak ponizej dziala ale generuje warning,
  *  spowodowany rzutowaniem parametru generycznego na Collection
  *  okazuje sie ze mozna to zastapic kodem ponizej ale pewnie dziala on duzo

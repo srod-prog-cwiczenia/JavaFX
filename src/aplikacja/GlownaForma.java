@@ -19,7 +19,6 @@ public class GlownaForma extends Application {
 	public static void main(String[] args) {
 	    launch(args);
 	}
-final static int LICZBA_ITEM_MENU = 7;
 @Override
   public void start(Stage primaryStage) {
 	GlowneMenuFrm.pokaz(primaryStage);
@@ -35,9 +34,10 @@ final static int LICZBA_ITEM_MENU = 7;
 	"Canvas", "Uruchomienie menu", "Test paska postępu", 
 	"Odnoga projektu nr 2",
 	"Komponent Suwak", "Wprowadzanie danych osob", "Koniec programu"};
+    int liczbaItemMenu = nazwyOpcji.length;
 //komponent MenuButton:
-    MenuItem mITab[] = new MenuItem[LICZBA_ITEM_MENU];
-    for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
+    MenuItem mITab[] = new MenuItem[liczbaItemMenu];
+    for (int ii = 0; ii < liczbaItemMenu; ii++) {
 	  mITab[ii] = new MenuItem(nazwyOpcji[ii]);
     }
     MenuButton mButton = new MenuButton("Opcje", null, mITab);
@@ -46,7 +46,7 @@ final static int LICZBA_ITEM_MENU = 7;
  /*   Scene scene = new Scene(hbox, 200, 100);
     primaryStage.setScene(scene);
     primaryStage.show(); */ // to poki co zbedne bo ponizej ustawiamy to na flowpanelu:
-    for (int ii = 0; ii < LICZBA_ITEM_MENU; ii++) {
+    for (int ii = 0; ii < liczbaItemMenu; ii++) {
 	switch (ii) {
 		case 0:	
 			mITab[ii].setOnAction(event -> {

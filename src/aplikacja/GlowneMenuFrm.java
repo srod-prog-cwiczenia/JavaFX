@@ -35,6 +35,7 @@ public class GlowneMenuFrm {
 		} else {
 			formatka3 = glowneStage;
 		}
+		formatka3.setMaximized(true);
 		formatka3.setTitle("Glowna formatka programu");
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root, 600, 650, Color.LIGHTGREEN);

@@ -22,11 +22,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import narzedzia.Pomocnicze;
-import nowe.BazaDanych;
 import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
 import nowe.TextAreaZTextEditFrm;
+import przyklady.BazaDanych;
 import przyklady.Strumienie;
 
 public class GlownaKlasa2 {

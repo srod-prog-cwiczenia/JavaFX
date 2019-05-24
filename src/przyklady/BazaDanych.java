@@ -1,4 +1,4 @@
-package nowe;
+package przyklady;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
