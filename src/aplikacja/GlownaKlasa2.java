@@ -2,6 +2,7 @@ package aplikacja;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import helper.Analiza;
 import helper.AnalizaDialog;
@@ -26,6 +27,7 @@ import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
 import nowe.TextAreaZTextEditFrm;
+import nowe.WyrazeniaRegularne;
 import przyklady.BazaDanych;
 import przyklady.Strumienie;
 
@@ -39,7 +41,8 @@ public class GlownaKlasa2 {
 				 "Test mapy",
 				 "Uruchomienie TextAreaZTextEditFrm", 
 				 "Bazy danych - przykłady",
-				 "Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)"
+				 "Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)",
+				 "Przykład wyrażeń regularnych (w trybie graficznym, nie konsolowym)"
 				};
 	};
 	
@@ -80,6 +83,9 @@ public class GlownaKlasa2 {
 				break;
 			case 8:
 				MieleniePliku.pobranieNazwyPliku(aStage);
+				break;
+			case 9:
+				WyrazeniaRegularne.test();
 				break;
 		}
 	} 
@@ -122,56 +128,22 @@ public class GlownaKlasa2 {
 
 		Stage primaryStage = new Stage();
 		primaryStage.setTitle("Odnoga projektu numer 2");
-		Button przycisk1 = new Button("Uruchomienie listy " +
-				"przykladow z opisem tego co sie dzieje na konsoli");
-
-		przycisk1.setOnAction((event) -> {
-			wybranaAkcja(1, primaryStage);
-		});
-
-		Button przycisk2 = new Button("Uruchomienie Text Area");
-		przycisk2.setOnAction((event) -> {
-			wybranaAkcja(2, primaryStage);
-		});
-		
-		Button przycisk3 = new Button("Test strumieni");
-		przycisk3.setOnAction((event) -> {
-			wybranaAkcja(3, primaryStage);
-		});
-
-		Button przycisk4 = new Button("Rekurencja");
-		przycisk4.setOnAction((event) -> {
-			wybranaAkcja(4, primaryStage);
-		});
-
-		Button przycisk6 = new Button("Test mapy");
-		przycisk6.setOnAction((event) -> {
-			wybranaAkcja(5, primaryStage);
-		});
-
-		Button przycisk7 = new Button("Uruchomienie TextAreaZTextEditFrm");
-		przycisk7.setOnAction((event) -> {
-			wybranaAkcja(6, primaryStage);
-		});
-
-		Button przycisk8 = new Button("Test bazy danych");
-		przycisk8.setOnAction((event) -> {
-			wybranaAkcja(7, primaryStage);
-		});
-
-		Button przycisk9 = new Button("Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)");
-		przycisk9.setOnAction((event) -> {
-			wybranaAkcja(8, primaryStage);
-		});
-
-		
+		List<Button> btnTab = new ArrayList<Button>();
+		int nrAkcji = 0;
+		for(String opis : getTablicaOpisow()) {
+			Button przycisk0 = new Button(opis);
+			int nrAkcjiEffektynieFinalZmienna = ++nrAkcji;
+			przycisk0.setOnAction((event) -> {
+				wybranaAkcja(nrAkcjiEffektynieFinalZmienna, primaryStage);
+			});
+			btnTab.add(przycisk0);
+		}  
 		Button btnWyjscie = new Button("Wyjscie");
   		btnWyjscie.setOnAction((event) -> {
 			primaryStage.close();
 		});
-		
 
-//przyk�ad na radiobutton:
+//osobny - dodatkowy przyk�ad na radiobutton:
         RadioButton radioButton1 = new RadioButton("Jeden");
         RadioButton radioButton2 = new RadioButton("Dwa");
         RadioButton radioButton3 = new RadioButton("Trzy");
@@ -187,8 +159,8 @@ public class GlownaKlasa2 {
 
         HBox hboxRB = new HBox(radioButton1, radioButton2, radioButton3, radioButton4);
 
-        Button przycisk5 = new Button("Sprawdz Radio Group");
-		przycisk5.setOnAction((event) -> {
+        Button btnRadio = new Button("Sprawdz Radio Group");
+		btnRadio.setOnAction((event) -> {
 			RadioButton selectedRadioButton =
 			        (RadioButton) radioGroup.getSelectedToggle();
 			if (selectedRadioButton.equals(radioButton1))
@@ -212,19 +184,16 @@ public class GlownaKlasa2 {
 		}
 /*		StackPane layout = new StackPane();
 		layout.getChildren().addAll(przycisk1, przycisk2, przycisk3);*///zamiast stackpane dajemy flowpane
-		if (tp == null)
-			fp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, przycisk6, 
-					przycisk7, przycisk8, przycisk9, hboxRB, przycisk5, btnWyjscie);
-		else 
-			tp.getChildren().addAll(przycisk1, przycisk2, 
-					przycisk3, przycisk4, przycisk6, 
-					przycisk7, przycisk8, przycisk9, hboxRB, przycisk5, btnWyjscie);
-
+		if (tp == null) {
+			fp.getChildren().addAll(btnTab);
+		    fp.getChildren().addAll(hboxRB, btnRadio, btnWyjscie);
+		} else { 
+			tp.getChildren().addAll(btnTab);
+		    tp.getChildren().addAll(hboxRB, btnRadio, btnWyjscie);
+		}
 		Scene scene = new Scene((tp == null ? fp : tp), 550, 550);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
-	
 }
