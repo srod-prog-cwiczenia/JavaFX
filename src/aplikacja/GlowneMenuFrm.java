@@ -22,8 +22,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javajava.JavaJava;
 import narzedzia.Pomocnicze;
+import narzedzia.TextAreaConsoleFrm;
 import nowe.ObiektyGraficzneFrm;
-import nowe.TextAreaConsoleFrm;
 import nowe.TextAreaZTextEdit2Frm;
 import przyklady.PobranieHTTP;
 

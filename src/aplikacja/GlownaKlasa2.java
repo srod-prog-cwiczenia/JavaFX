@@ -26,6 +26,7 @@ import narzedzia.Pomocnicze;
 import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
+import nowe.PrzykladyXML;
 import nowe.TextAreaZTextEditFrm;
 import nowe.WyrazeniaRegularne;
 import przyklady.BazaDanych;
@@ -42,7 +43,8 @@ public class GlownaKlasa2 {
 				 "Uruchomienie TextAreaZTextEditFrm", 
 				 "Bazy danych - przykłady",
 				 "Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)",
-				 "Przykład wyrażeń regularnych (w trybie graficznym, nie konsolowym)"
+				 "Przykład wyrażeń regularnych (w trybie graficznym, nie konsolowym)",
+				 "Przyklady obslugi plikow XML"
 				};
 	};
 	
@@ -86,6 +88,9 @@ public class GlownaKlasa2 {
 				break;
 			case 9:
 				WyrazeniaRegularne.test();
+				break;
+			case 10:
+				PrzykladyXML.utworzenieXML(aStage);
 				break;
 		}
 	} 

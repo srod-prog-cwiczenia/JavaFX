@@ -1,4 +1,4 @@
-package nowe;
+package narzedzia;
 
 import java.io.File;
 import java.util.Arrays;
@@ -71,8 +71,12 @@ public class TextAreaConsoleFrm {
 		  dialog.setHeaderText("Podaj treść");
 		  dialog.setContentText("Podaj treść");
 
-		  // Typowa droga do otrzymania odpowiedzi:
+		  // Typowa droga do otrzymania odpowiedzi (tryb modalny):
 		  Optional<String> result = dialog.showAndWait();
+		  /** TODO: Nalezy ustalic jak wywolac formatke dialogu nie w trybie modalnym 
+		   * (aby moc np. przewijac textedit).
+		   *  
+		   */
 		  if (result.isPresent()) {
 /*TODO: zmiana koloru tekstu w ten sposób niestety nie działa - dlaczego?
  * 			  Region region = (Region) obszarTxt.lookup(".content");

@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import narzedzia.TextAreaConsoleFrm;
+
 public class WyrazeniaRegularne {
     public static void test() {
 		TextAreaConsoleFrm cons = new TextAreaConsoleFrm();    	
@@ -60,5 +62,6 @@ public class WyrazeniaRegularne {
             	cons.pokaz("Nie pasuje.");
             }
         } while (true);
+        cons.zamkniecieFormatki();
     }
 }

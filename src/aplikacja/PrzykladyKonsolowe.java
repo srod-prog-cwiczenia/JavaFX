@@ -3,7 +3,7 @@ package aplikacja;
 import java.util.Arrays;
 import java.util.List;
 
-import nowe.TextAreaConsoleFrm;
+import narzedzia.TextAreaConsoleFrm;
 
 public class PrzykladyKonsolowe {
   final public static boolean KONSOLA = false; 
