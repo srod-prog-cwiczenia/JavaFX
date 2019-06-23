@@ -35,11 +35,23 @@ public class GlowneMenuFrm {
 		} else {
 			formatka3 = glowneStage;
 		}
+/**
+ * TODO: jesli setMaximized damy w komentarz (w zamian za to dodamy formatka3.setFullScreen(true)
+ * na dole modulu zaraz po formatka3.show to znika zjawisko nastepujace: po wlaczeniu
+ * setMaximized(true) w przypadku wyswietlenia np komunikatu glowna forma sie niespodziewanie
+ * przesuwa - niestety pojawiaja sie inne nieprzyjemne skutki uboczne - 
+ * wyjasnic to jak temu zapobiec - fullScreen moze byc tylko tymczasowe ,,lekarstwem''.
+ * ALE okazuje sie ze sekwencja postaci: setX,setY...etc. (cztery cudaczne instrukcje
+ * zaraz po setMaximized) ulecza wspomniany problem - ale dlaczego???
+ */
 		formatka3.setMaximized(true);
+		formatka3.setX(formatka3.getX());
+		formatka3.setY(formatka3.getY());
+        formatka3.setWidth(formatka3.getWidth());
+        formatka3.setHeight(formatka3.getHeight());
 		formatka3.setTitle("Glowna formatka programu");
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root, 600, 650, Color.LIGHTGREEN);
-
 		MenuBar menuBar = new MenuBar();
 		menuBar.prefWidthProperty().bind(formatka3.widthProperty());
 		root.setTop(menuBar);
@@ -199,5 +211,6 @@ public class GlowneMenuFrm {
 
 		formatka3.setScene(scene);
 		formatka3.show();
+//		formatka3.setFullScreen(true); // patrz komentarz wyzej
 	}
 }

@@ -1,4 +1,4 @@
-package aplikacja;
+package przyklady.interfejsy;
 
 public interface Szkic2 {
   String info();

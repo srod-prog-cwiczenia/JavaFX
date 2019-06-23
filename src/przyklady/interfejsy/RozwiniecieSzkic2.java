@@ -1,4 +1,4 @@
-package aplikacja;
+package przyklady.interfejsy;
 
 public class RozwiniecieSzkic2 implements Szkic2 {
   public static int liczba = 0; 
