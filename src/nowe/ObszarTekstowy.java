@@ -93,8 +93,14 @@ public class ObszarTekstowy {
 	    	  File wybranyPlik = wybierakPliku.showOpenDialog(formatkaN1);
 	    	  wczytaniePliku(wybranyPlik, textArea);
 	      });
+
+	      Button btnWyjscie = new Button("Wyjscie");
+	      btnWyjscie.setMinWidth(30);
+	      btnWyjscie.setOnAction(action -> {
+            formatkaN1.close();	          
+	      });
 	      
-	      VBox vbox = new VBox(textArea, btnSumowanie, btnWybierzPlik);
+	      VBox vbox = new VBox(textArea, btnSumowanie, btnWybierzPlik, btnWyjscie);
 	      Scene scene = new Scene(vbox, 500, 300);
 	      formatkaN1.setScene(scene);
 	      formatkaN1.show();

@@ -1,10 +1,19 @@
 package narzedzia;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 
 public class Pomocnicze {
+	public static String stackTrace2String(Exception aE) {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		aE.printStackTrace(pw);
+		return sw.toString(); 
+	}
 	public static void komunikat(String tresc) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Komunikat:");

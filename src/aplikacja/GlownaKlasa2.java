@@ -26,11 +26,13 @@ import narzedzia.Pomocnicze;
 import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
-import nowe.PrzykladyXML;
+import nowe.RefleksjaPrzyklad;
 import nowe.TextAreaZTextEditFrm;
 import nowe.WyrazeniaRegularne;
 import przyklady.BazaDanych;
+import przyklady.PrzykladyXML;
 import przyklady.Strumienie;
+import przyklady.interfejsy.Konsumer;
 
 public class GlownaKlasa2 {
 	public static String[] getTablicaOpisow() {
@@ -44,7 +46,9 @@ public class GlownaKlasa2 {
 				 "Bazy danych - przykłady",
 				 "Usuniecie białych znaków z pliku (czyli: jak czytać pliki binarne)",
 				 "Przykład wyrażeń regularnych (w trybie graficznym, nie konsolowym)",
-				 "Przyklady obslugi plikow XML"
+				 "Przyklady obslugi plikow XML",
+				 "Refleksja",
+				 "Inteface Consumer"
 				};
 	};
 	
@@ -75,23 +79,29 @@ public class GlownaKlasa2 {
 						  TextAreaZTextEditFrm.dopiszDoTextArea(TextAreaZTextEditFrm.getTextField());
 						  TextAreaZTextEditFrm.setTextField("");
 						  }});
-				break;
-			case 7: 
-				BazaDanych bd = new BazaDanych();
-				if (bd.isPoprawnie()) {
-					bd.testBazyDanych();
-					bd.zamknieciePolaczenia();
-				}	
-				break;
-			case 8:
-				MieleniePliku.pobranieNazwyPliku(aStage);
-				break;
-			case 9:
-				WyrazeniaRegularne.test();
-				break;
-			case 10:
-				PrzykladyXML.utworzenieXML(aStage);
-				break;
+			break;
+		case 7: 
+			BazaDanych bd = new BazaDanych();
+			if (bd.isPoprawnie()) {
+				bd.testBazyDanych();
+				bd.zamknieciePolaczenia();
+			}	
+			break;
+		case 8:
+			MieleniePliku.pobranieNazwyPliku(aStage);
+			break;
+		case 9:
+			WyrazeniaRegularne.test();
+			break;
+		case 10:
+			PrzykladyXML.utworzenieXML(aStage);
+			break;
+		case 11:
+			RefleksjaPrzyklad.run();
+			break;
+		case 12:
+			Konsumer.run();
+			break;
 		}
 	} 
 

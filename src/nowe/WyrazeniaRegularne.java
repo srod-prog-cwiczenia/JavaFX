@@ -4,12 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import narzedzia.Pomocnicze;
 import narzedzia.TextAreaConsoleFrm;
 
 public class WyrazeniaRegularne {
     public static void test() {
 		TextAreaConsoleFrm cons = new TextAreaConsoleFrm();    	
-        cons.pokaz("Podaj wyrażenie regularne.");
+        cons.println("Podaj wyrażenie regularne.");
         String wzorStr =  cons.czytajLinie();
         if (wzorStr.isEmpty()) return;
         Pattern wzor;
@@ -17,13 +18,13 @@ public class WyrazeniaRegularne {
 			wzor = Pattern.compile(wzorStr);
 		} catch (PatternSyntaxException e) {
 			// TODO Auto-generated catch block
-			cons.pokaz("Błąd w wyrażeniu regularnym");
-			//e.printStackTrace();
+			cons.println("Błąd w wyrażeniu regularnym");
+			cons.println(Pomocnicze.stackTrace2String(e));			//e.printStackTrace();
 			return;
 		}
 
         do {
-            cons.pokaz("Podaj napis (pusty oznacza wyjście).");
+            cons.println("Podaj napis (pusty oznacza wyjście).");
             String liniaStr = cons.czytajLinie();
             if (liniaStr == null || liniaStr.isEmpty()) {
                 break;
@@ -32,34 +33,34 @@ public class WyrazeniaRegularne {
 
             cons.pokaz("-------- sprawdzenie za pomoca instrukcji matcher.find() --------");
             if (mm.find()) {
-            	cons.pokaz("Pasuje");
+            	cons.println("Pasuje");
                 for (int l = 1; l <= mm.groupCount(); l++)
-                	cons.pokaz(String.format("Podwyrażenie %s",
+                	cons.println(String.format("Podwyrażenie %s",
                             mm.group(l)));
-                    cons.pokaz(String.format("Znaleziony wzorzec: znaki od %d do %d", 
+                    cons.println(String.format("Znaleziony wzorzec: znaki od %d do %d", 
                 			mm.start(), mm.end()));
 
             } else {
-            	cons.pokaz("Nie pasuje.");
+            	cons.println("Nie pasuje.");
             }
             
-            cons.pokaz("\n-------- sprawdzenie za pomoca instrukcji matcher.matches() --------");
+            cons.println("\n-------- sprawdzenie za pomoca instrukcji matcher.matches() --------");
             if (mm.matches()) {
-            	cons.pokaz("Pasuje");
+            	cons.println("Pasuje");
                 int ileTrafien = mm.groupCount();
                 if (ileTrafien > 0) {
                 	for (int i = 0; i < liniaStr.length(); i++) {
                 		for (int j = 1; j <= ileTrafien; j++) 
                 			if (i == mm.start(j))
-                				cons.pokaz('(');
-                		cons.pokaz(liniaStr.charAt(i));                		
+                				cons.print('(');
+                		cons.print(liniaStr.charAt(i));                		
                 		for (int j = 1; j <= ileTrafien; j++) 
                 			if (i + 1 == mm.end(j))
-                				cons.pokaz(')');
+                				cons.print(')');
                 	}
                 }
             } else {
-            	cons.pokaz("Nie pasuje.");
+            	cons.println("Nie pasuje.");
             }
         } while (true);
         cons.zamkniecieFormatki();

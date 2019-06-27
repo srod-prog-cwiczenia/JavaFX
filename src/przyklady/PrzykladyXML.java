@@ -1,8 +1,9 @@
-package nowe;
+package przyklady;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -59,6 +60,7 @@ public class PrzykladyXML {
 	        // (=przeksztalcenie obiektu DOM do pliku XML)
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();
+	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 	        DOMSource domSource = new DOMSource(document);
 			FileChooser wybierakPliku = new FileChooser();
             FileChooser.ExtensionFilter filtrRozszerzen = new FileChooser.ExtensionFilter("Pliki XML (*.xml)", "*.xml");
@@ -71,7 +73,7 @@ public class PrzykladyXML {
             if (plik == null) {
             	return;
             }
-	        
+           
 	        StreamResult wynikStrumieniowania = new StreamResult(plik);
 	 
 	        // mozemy takze ,,wylac'' zawartosc pliku XML na konsole:

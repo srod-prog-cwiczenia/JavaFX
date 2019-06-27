@@ -5,11 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -28,7 +32,22 @@ public class TextAreaConsoleFrm {
     	  formatka.initModality(Modality.APPLICATION_MODAL);
 	      formatka.setTitle("emulacja konsoli w trybie graficznym");
 	      obszarTxt = new TextArea();
-
+	      
+/**   to rozwinięta obudowa dla komponentów, niestety w tym kontekście akurat nie sprawdza się (biały ekran)  
+  	      Group root = new Group();
+	      GridPane gridpane = new GridPane();
+	      gridpane.setPadding(new Insets(5));
+	      gridpane.setHgap(10);
+	      gridpane.setVgap(10); 
+	      GridPane.setHalignment(obszarTxt, HPos.CENTER);
+	      gridpane.add(obszarTxt, 0, 1);
+          root.getChildren().add(gridpane); */    	      
+	      
+	      obszarTxt.setPrefRowCount(100);
+	      obszarTxt.setPrefColumnCount(100);
+	      obszarTxt.setWrapText(true);
+	      obszarTxt.setPrefWidth(150);
+	      
 	      Tooltip ttWyjscie = new Tooltip("Wyjscie z konsoli graficznej");
 	      btnWyjscie = new Button("Wyjscie");
 	      btnWyjscie.setMinWidth(50);
@@ -38,7 +57,8 @@ public class TextAreaConsoleFrm {
 	    	  formatka.close();
 	      });
 	      vbox = new VBox(obszarTxt, btnWyjscie);
-	      scena = new Scene(vbox, 500, 300);
+	      //scena = new Scene(vbox, 500, 300);
+	      Scene scena = new Scene(vbox, 800, 630);
 	      formatka.setScene(scena);
 	      formatka.show();
 	  }
@@ -47,11 +67,35 @@ public class TextAreaConsoleFrm {
 	    	  obszarTxt.appendText(linia + "\n");
 	      }
 	  }
+//łańcuchy:
 	  public void pokaz(String linia) {
 		  obszarTxt.appendText(linia + "\n");
 	  }
+	  public void println(String linia) {
+		  pokaz(linia);
+	  }
+	  public void print(String linia) {
+		  obszarTxt.appendText(linia);		  
+	  }
+//liczby:	  
 	  public void pokaz(int aLiczba) {
 		  pokaz("" + aLiczba);
+	  }
+	  public void println(int aLiczba) {
+		  pokaz(aLiczba);
+	  }
+	  public void print(int aLiczba) {
+		  obszarTxt.appendText("" + aLiczba);		  
+	  }
+//char:
+	  public void pokaz(char aZnak) {
+		  pokaz("" + aZnak);
+	  }
+	  public void println(char aZnak) {
+		  pokaz(aZnak);
+	  }
+	  public void print(char aZnak) {
+		  obszarTxt.appendText("" + aZnak);		  
 	  }
 	  public void zamkniecieFormatki() {
 		  formatka.close();	  
