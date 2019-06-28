@@ -26,13 +26,14 @@ import narzedzia.Pomocnicze;
 import nowe.MieleniePliku;
 import nowe.ObszarTekstowy;
 import nowe.PrzykladMap;
+import nowe.PrzykladyXMLRadioButton;
 import nowe.RefleksjaPrzyklad;
 import nowe.TextAreaZTextEditFrm;
 import nowe.WyrazeniaRegularne;
 import przyklady.BazaDanych;
-import przyklady.PrzykladyXML;
 import przyklady.Strumienie;
 import przyklady.interfejsy.Konsumer;
+import przyklady.xml.PrzykladyXML;
 
 public class GlownaKlasa2 {
 	public static String[] getTablicaOpisow() {
@@ -94,7 +95,8 @@ public class GlownaKlasa2 {
 			WyrazeniaRegularne.test();
 			break;
 		case 10:
-			PrzykladyXML.utworzenieXML(aStage);
+//			PrzykladyXML.utworzenieXML(aStage);
+			PrzykladyXMLRadioButton.run();
 			break;
 		case 11:
 			RefleksjaPrzyklad.run();
