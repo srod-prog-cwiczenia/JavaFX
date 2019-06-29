@@ -29,9 +29,9 @@ import nowe.PrzykladMap;
 import nowe.PrzykladyXMLRadioButton;
 import nowe.RefleksjaPrzyklad;
 import nowe.TextAreaZTextEditFrm;
-import nowe.WyrazeniaRegularne;
 import przyklady.BazaDanych;
 import przyklady.Strumienie;
+import przyklady.WyrazeniaRegularne;
 import przyklady.interfejsy.Konsumer;
 import przyklady.xml.PrzykladyXML;
 

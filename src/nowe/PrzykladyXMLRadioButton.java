@@ -1,5 +1,11 @@
 package nowe;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,7 +26,7 @@ public class PrzykladyXMLRadioButton {
 
         RadioButton radioButton1 = new RadioButton("Utworzenie XML");
         RadioButton radioButton2 = new RadioButton("Walidacja XMLa zadanym plikiem XSD");
-        RadioButton radioButton3 = new RadioButton("W przygotowaniu");
+        RadioButton radioButton3 = new RadioButton("Wczytanie XML");
         RadioButton radioButton4 = new RadioButton("W przygotowaniu");
 
         ToggleGroup radioGroup = new ToggleGroup();
@@ -42,7 +48,12 @@ public class PrzykladyXMLRadioButton {
 			else if (selectedRadioButton.equals(radioButton2))
   			  PrzykladyXML.walidacjaXMLzadanymXSD(stage);  					
 			else if (selectedRadioButton.equals(radioButton3))
-  			  Pomocnicze.komunikat("Opcja w przygotowaniu");  					
+				try {
+					PrzykladyXML.wczytanieDowolnegoXML(stage);
+				} catch (ParserConfigurationException | SAXException | IOException e) {
+					// TODO Auto-generated catch block
+					Pomocnicze.komunikat(Pomocnicze.stackTrace2String(e));
+				}
 			else if (selectedRadioButton.equals(radioButton4))
 				Pomocnicze.komunikat("Opcja w przygotowaniu");  					
 
